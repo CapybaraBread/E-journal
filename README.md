@@ -1,1 +1,1 @@
-# E-journal-
+# E-journal
