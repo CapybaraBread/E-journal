@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{%load static%}
+{% block title %} SkyDream - Registration {%endblock%}
+{% block content %}
+<form action="{% url 'registration' %}" method="post">
+    {% csrf_token %}
+    <div class = "registration-bar">
+        <h1>SkyDream</h1>
+        <div class="account-data">
+            <span>День рождения</span>
+            <div class = "birthday">
+                {{form.birthday}}
+            </div>
+            <span>Электронная почта</span>
+            <div class = "email">
+                {{form.email}}
+            </div>
+            <span>Имя</span>
+            <div class = "first_name">
+                {{form.first_name}}
+            </div>
+            <span>Фамилия</span>
+            <div class = "last_name">
+                {{form.last_name}}
+            </div>
+            <span>Логин</span>
+            <div class = "login">
+                {{form.username}}
+            </div>
+            <span>Пароль</span>
+            <div class = "password1">
+                {{form.password1}}
+            </div>
+            <span>Подтвердите пароль</span>
+            <div class = "password2">
+                {{form.password2}}
+            </div>
+        </div>
+        {% if form.errors %}
+            <label>{{form.errors}}</label>
+        {%endif%}
+        <button id = "registration">Зарегистрироваться</button>
+        <div class = "additional-options">
+            <a href="{% url 'login' %}">Уже есть аккаунт?</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

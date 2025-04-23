@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{%load static%}
+{% block title %} SkyDream - Login {%endblock%}
+{% block content %}
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div class = "login-bar">
+        <h1>SkyDream</h1>
+        <div class="account-data">
+            <span>Логин</span>
+            <div class = "login">
+                {{form.username}}
+            </div>
+            <span>Пароль</span>
+            <div class = "password">
+                {{form.password}}
+            </div>
+            {% include "users/includes/notifications.html" %}
+        </div>
+        <div class = "additional-options">
+            <a href="">Забыли пароль</a> | <a href="{% url 'registration' %}">Зарегистрироваться</a>
+        </div>
+        <button type = "submit">Войти</button>
+    </div>
+</form>
+{%endblock%}
