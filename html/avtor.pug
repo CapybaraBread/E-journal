@@ -1,0 +1,12 @@
+mixin topic-card(type, text)
+    p.form_text=text 
+    input(type=type)
+
+main
+    div.registration_content
+        h1 Войти в систему
+        form.form_content
+            +topic-card('text', "Логин")
+            +topic-card('password', "Пароль")
+            button(type="submit") Войти
+            a.url_avtor(href='/') Регистрация
