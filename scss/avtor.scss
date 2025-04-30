@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
 $blue: #4E80EE;
-$black_blue: #3361c4;
+$black_blue: #2151b8;
 
 html {
   height: 100%;
@@ -13,33 +13,23 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  height: inherit;
-  overflow: hidden;
-  background-image: url("/media/png/reg_background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: form_animation 6s infinite alternate-reverse linear;
-}
-@keyframes form_animation{
-  to {
-    background-position: 25% 50%;
-  }
+  background-color: #EBEBF2;
+  height: 100%;
+  width: 100%;
 }
 .registration_content{
-	overflow: auto;
-	scrollbar-width: thin;
-	scroll-behavior: smooth;
   width: 45vw;
-  height: auto;
-  padding: 5vh 5vw 5vh 5vw;
+  padding: 5vh .5vw;
   border-radius: 1.125rem;
-  background-color: #f0f0f0;
+  background-color: #fff;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 h1{
   font-size: 7vh;
+  margin: 0;
 	font-family: "Acier Sans", sans-serif;
 	font-weight: bold;
-  margin-bottom: 2.5vh;
   text-align: center;
 }
 form{
@@ -53,7 +43,7 @@ form{
   font-size: 3vh;
 }
 input, button{
-  height: 9vh;
+  height: 7vh;
   margin: auto;
 }
 input{
@@ -62,8 +52,12 @@ input{
   font-size: 2.5vh;
   padding-right: 1vw;
   padding-left: 1vw;
-  margin-bottom: 3vh;
   border-radius: 1.25rem;
+  font-weight: 800;
+  transition: all .25s;
+}
+input:valid{
+  border-color: $black_blue;
 }
 button{
   width: 85%;
@@ -71,11 +65,13 @@ button{
   border: none;
   font-size: 3vh;
   font-weight: bold;
-  cursor:pointer;
+  cursor: pointer;
+  margin-top: 3vh;
   text-align: center;
   line-height: .4vh;
   background-color: $blue;
   color: #f9f9f9;
+  transition: all 0.25s;
 }
 a {
   color: $blue;
@@ -84,10 +80,10 @@ a {
 	margin-top: 3vh;
   margin-left: 10%;
   font-weight: bold;
+  transition: all .25s;
 }
 input:hover{
   border: solid .4vh $blue;
-  transition: all 0.375s;
 }
 input:focus{
   outline: none;
@@ -95,9 +91,9 @@ input:focus{
 }
 button:hover{
   background-color: $black_blue;
-  transition: all 0.375s;
 }
 a:hover{
   color: $black_blue;
-  transition: all 0.375s;
+  cursor: pointer;
+  text-decoration: underline;
 }

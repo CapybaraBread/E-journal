@@ -318,35 +318,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: inherit;
-  overflow: hidden;
-  background-image: url(media/reg_background.d862775b6f2e7cd8928f.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: form_animation 6s infinite alternate-reverse linear;
+  background-color: #EBEBF2;
 }
 
-@keyframes form_animation {
-  to {
-    background-position: 25% 50%;
-  }
-}
 .registration_content {
-  overflow: auto;
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
   width: 45vw;
-  height: 90vh;
-  padding: 1vh 1vw 3vh 1vw;
+  padding: 5vh 0.5vw;
   border-radius: 1.125rem;
-  background-color: #f0f0f0;
+  background-color: #fff;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 
 h1 {
   font-size: 7vh;
+  margin: 0;
   font-family: "Acier Sans", sans-serif;
   font-weight: bold;
-  margin-bottom: 2.5vh;
   text-align: center;
 }
 
@@ -363,7 +351,7 @@ form {
 }
 
 input, button {
-  height: 9vh;
+  height: 7vh;
   margin: auto;
 }
 
@@ -374,6 +362,12 @@ input {
   padding-right: 1vw;
   padding-left: 1vw;
   border-radius: 1.25rem;
+  font-weight: 800;
+  transition: all 0.25s;
+}
+
+input:valid {
+  border-color: #2151b8;
 }
 
 button {
@@ -388,6 +382,7 @@ button {
   line-height: 0.4vh;
   background-color: #4E80EE;
   color: #f9f9f9;
+  transition: all 0.25s;
 }
 
 a {
@@ -397,25 +392,25 @@ a {
   margin-top: 3vh;
   margin-left: 10%;
   font-weight: bold;
+  transition: all 0.25s;
 }
 
 input:hover {
   border: solid 0.4vh #4E80EE;
-  transition: all 0.375s;
 }
 
 input:focus {
   outline: none;
-  border: #3361c4 solid 0.4vh;
+  border: #2151b8 solid 0.4vh;
 }
 
 button:hover {
-  background-color: #3361c4;
-  transition: all 0.375s;
+  background-color: #2151b8;
 }
 
 a:hover {
-  color: #3361c4;
-  transition: all 0.375s;
+  color: #2151b8;
+  cursor: pointer;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=registration.css.map */
