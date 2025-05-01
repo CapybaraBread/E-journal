@@ -1,0 +1,313 @@
+/* gs.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --blue: #3B82F6;
+  --dark-blue: #1E40AF;
+  --gray: #f5f9ff;
+  --text: #333;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: var(--gray);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Бургер-меню */
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  cursor: pointer;
+  color: var(--dark-blue);
+}
+
+/* Сайдбар */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  background: var(--blue);
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: var(--dark-blue);
+  border-radius: 8px;
+}
+
+/* Основной контент */
+main {
+  padding: 60px 20px;
+  max-width: 1200px;
+}
+
+/* Сдвиг под сайдбар на десктопе */
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  .menu-btn {
+    display: none;
+  }
+  main {
+    margin-left: 220px;
+  }
+}
+
+/* Интро */
+.intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.intro h1 {
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+}
+.intro p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Секция классов */
+.classes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.classes-header h2 {
+  font-size: 2rem;
+  color: var(--dark-blue);
+  margin: 0;
+}
+.btn {
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background: var(--dark-blue);
+  transform: translateY(-2px);
+}
+.classes-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+.class-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.class-card h3 {
+  margin-bottom: 10px;
+  color: var(--blue);
+}
+.class-card .teacher-name {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.count-badge {
+  background: var(--dark-blue);
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+/* Новостная лента */
+.news-section {
+  margin-top: 60px;
+}
+.news-section h2 {
+  font-size: 2rem;
+  color: var(--dark-blue);
+  margin-bottom: 20px;
+  text-align: left;
+}
+.news-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.news-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 0 0 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.news-item h3 {
+  margin-bottom: 10px;
+  color: var(--blue);
+}
+.news-item p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.news-container::-webkit-scrollbar {
+  height: 8px;
+}
+.news-container::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 10px;
+}
+.news-container::-webkit-scrollbar-track {
+  background: var(--gray);
+}
+/* --------- Modal Add Class Panel Styles --------- */
+.modal {
+  display: none;              /* скрыта по умолчанию */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 20px;
+  align-items: center;        /* центрировать содержимое */
+  justify-content: center;
+}
+
+.modal.active {
+  display: flex;              /* становится flex-контейнером при открытии */
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--dark-blue);
+  transition: color 0.2s;
+}
+.close-modal:hover {
+  color: var(--blue);
+}
+
+.modal-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--dark-blue);
+  text-align: center;
+}
+
+#add-class-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#add-class-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#add-class-form .form-group label {
+  font-size: 0.95rem;
+  color: var(--dark-blue);
+}
+
+#add-class-form .form-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#add-class-form .form-group input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#save-class-btn {
+  align-self: flex-end;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#save-class-btn:hover {
+  background: var(--dark-blue);
+  transform: translateY(-1px);
+}
