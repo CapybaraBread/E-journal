@@ -1,45 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 
 $blue: #4E80EE;
-$black_blue: #3361c4;
+$black_blue: #2151b8;
 
 html {
   height: 100%;
   width: 100%;
 }
 body{
+  height: 100%;
   font-family: 'Montserrat', sans-serif;
   color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: inherit;
-  overflow: hidden;
-  background-image: url("/media/png/reg_background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: form_animation 6s infinite alternate-reverse linear;
-}
-@keyframes form_animation{
-  to {
-    background-position: 25% 50%;
-  }
+  background-color: #EBEBF2;
 }
 .registration_content{
-  overflow: auto;
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
   width: 45vw;
-  height: 90vh;
-  padding: 1vh 1vw 3vh 1vw;
+  padding: 3vh .5vw;
   border-radius: 1.125rem;
-  background-color: #f0f0f0;
+  background-color: #fff;
+  margin-top: 2.45vh;
+  margin-bottom: 2.45vh;
 }
 h1{
-  font-size: 7vh;
+  margin: 0;
 	font-family: "Acier Sans", sans-serif;
 	font-weight: bold;
-  margin-bottom: 2.5vh;
   text-align: center;
 }
 form{
@@ -47,13 +35,16 @@ form{
   flex-direction: column;
 }
 .form_text{
+  margin: 0;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
   margin-left: 9%;
   color: #636770;
   font-weight: 600;
   font-size: 3vh;
 }
 input, button{
-  height: 9vh;
+  height: 7vh;
   margin: auto;
 }
 input{
@@ -62,8 +53,20 @@ input{
   font-size: 2.5vh;
   padding-right: 1vw;
   padding-left: 1vw;
-
   border-radius: 1.25rem;
+  font-weight: 800;
+  transition: all .25s;
+
+  &:hover{
+    border: solid .4vh $blue;
+  }
+  &:focus{
+    outline: none;
+    border: $black_blue solid .4vh;
+  }
+  &:valid{
+    border-color: $black_blue;
+  }
 }
 button{
   width: 85%;
@@ -71,12 +74,17 @@ button{
   border: none;
   font-size: 3vh;
   font-weight: bold;
-  cursor:pointer;
+  cursor: pointer;
   margin-top: 3vh;
   text-align: center;
   line-height: .4vh;
   background-color: $blue;
   color: #f9f9f9;
+  transition: all 0.25s;
+
+  &:hover{
+    background-color: $black_blue;
+  }
 }
 a {
   color: $blue;
@@ -85,20 +93,11 @@ a {
 	margin-top: 3vh;
   margin-left: 10%;
   font-weight: bold;
-}
-input:hover{
-  border: solid .4vh $blue;
-  transition: all 0.375s;
-}
-input:focus{
-  outline: none;
-  border: $black_blue solid .4vh;
-}
-button:hover{
-  background-color: $black_blue;
-  transition: all 0.375s;
-}
-a:hover{
+  transition: all .25s;
+
+  &:hover{
   color: $black_blue;
-  transition: all 0.375s;
+  cursor: pointer;
+  text-decoration: underline;
+  }
 }
