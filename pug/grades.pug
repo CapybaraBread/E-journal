@@ -5,7 +5,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Школьный журнал — Оценки
-    link(rel="stylesheet", href="grades.css")
+    link(rel="stylesheet", href=require("../scss/grades.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -16,7 +16,7 @@ html(lang="ru")
     nav.sidebar
       ul
         li
-          a(href="../glavnaia_stranica/gs.html")
+          a(href=require("gs.pug"))
             span.material-icons home
             |  Главная
         li
@@ -99,4 +99,4 @@ html(lang="ru")
               option(value="chem") Химия
           button.btn(type="button") Сохранить
 
-    script(src="grades.js")
+    script(src=require("../grades.js"))

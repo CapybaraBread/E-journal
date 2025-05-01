@@ -5,7 +5,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Школьный журнал — Главная
-    link(rel="stylesheet", href="gs.css")
+    link(rel="stylesheet", href=require("../scss/gs.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -16,7 +16,7 @@ html(lang="ru")
     nav.sidebar
       ul
         li
-          a(href="gs.html")
+          a(href="/pug/gs.pug")
             span.material-icons home
             |  Главная
         li
@@ -24,7 +24,7 @@ html(lang="ru")
             span.material-icons class
             |  Страница класса
         li
-          a(href="/html/ocenci/grades.html")
+          a(href="/pug/grades.pug")
             span.material-icons grade
             |  Оценки
         li
@@ -90,4 +90,4 @@ html(lang="ru")
             h3 Родительское собрание
             p Напоминаем, что собрание состоится в среду в 18:00.
 
-    script(src="gs.js", defer)
+    script(src=require("gs.js"))
