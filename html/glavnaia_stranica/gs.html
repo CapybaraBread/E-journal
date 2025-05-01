@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Школьный Журнал</title>
-  <link rel="stylesheet" href="/html/glavnaia_stranica/gs.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Школьный журнал — Главная</title>
+  <link rel="stylesheet" href="gs.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 <body>
   <!-- Бургер-меню -->
-  <div class="menu-btn">
-    <span class="material-icons">menu</span>
-  </div>
+  <div class="menu-btn"><span class="material-icons">menu</span></div>
 
   <!-- Сайдбар -->
   <nav class="sidebar">
     <ul>
-      <li><a href="#"><span class="material-icons">home</span>Главная страница</a></li>
+      <li><a href="gs.html"><span class="material-icons">home</span>Главная</a></li>
       <li><a href="#"><span class="material-icons">class</span>Страница класса</a></li>
-      <li><a href="/html/glavnaia_stranica/gs.html"><span class="material-icons">grade</span>Оценки</a></li>
+      <li><a href="/html/ocenci/grades.html"><span class="material-icons">grade</span>Оценки</a></li>
       <li><a href="#"><span class="material-icons">login</span>Выход</a></li>
-      <li><a href="#"><span class="material-icons">admin_panel_settings</span>Админка</a></li>
     </ul>
   </nav>
+
+  <!-- Модалка для добавления класса -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Добавить класс</h2>
+      <form id="add-class-form">
+        <div class="form-group">
+          <label for="class-name">Название класса</label>
+          <input type="text" id="class-name" name="class-name" />
+        </div>
+        <div class="form-group">
+          <label for="teacher-name">ФИО классного руководителя</label>
+          <input type="text" id="teacher-name" name="teacher-name" />
+        </div>
+        <div class="form-group">
+          <label for="student-count">Кол-во учеников</label>
+          <input type="number" id="student-count" name="student-count" min="1" />
+        </div>
+      </form>
+      <button id="save-class-btn" class="btn">Сохранить</button>
+    </div>
+  </div>
 
   <!-- Основной контент -->
   <main>
     <section class="intro">
       <h1>Школьный электронный журнал</h1>
-      <p>Легко и удобно следи за успеваемостью и домашними заданиями онлайн.</p>
+      <p>Легко и удобно следить за успеваемостью и домашними заданиями онлайн.</p>
     </section>
 
     <!-- Секция классов -->
@@ -37,7 +57,29 @@
         <h2>Наши классы</h2>
         <button id="add-class-btn" class="btn">+ Добавить класс</button>
       </div>
-      <div id="classes-container" class="classes-grid"></div>
+      <div id="classes-container" class="classes-grid">
+        <!-- Статичные карточки -->
+        <div class="class-card">
+          <h3>7А класс</h3>
+          <div class="teacher-name">Кл. рук.: Иванова Е.В.</div>
+          <span class="count-badge">25 учеников</span>
+        </div>
+        <div class="class-card">
+          <h3>7Б класс</h3>
+          <div class="teacher-name">Кл. рук.: Петрова О.С.</div>
+          <span class="count-badge">28 учеников</span>
+        </div>
+        <div class="class-card">
+          <h3>8А класс</h3>
+          <div class="teacher-name">Кл. рук.: Сидорова А.М.</div>
+          <span class="count-badge">27 учеников</span>
+        </div>
+        <div class="class-card">
+          <h3>8Б класс</h3>
+          <div class="teacher-name">Кл. рук.: Кузнецова Н.В.</div>
+          <span class="count-badge">26 учеников</span>
+        </div>
+      </div>
     </section>
 
     <!-- Новостная лента -->
@@ -60,6 +102,6 @@
     </section>
   </main>
 
-  <script src="home_pages.js" defer></script>
+  <script src="gs.js" defer></script>
 </body>
 </html>

@@ -1,70 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.querySelector('.menu-btn');
-    const sidebar = document.querySelector('.sidebar');
-    menuBtn.addEventListener('click', () => sidebar.classList.toggle('active'));
-  
-    const gradesTableBody = document.querySelector('.grades table tbody');
-    const modal = document.getElementById('modal');
-    const editGradesBtn = document.getElementById('edit-grades-btn');
-    const closeModal = document.querySelector('.close-modal');
-    const editableGrades = document.getElementById('editable-grades');
-    const saveGradesBtn = document.getElementById('save-grades-btn');
-  
-    let gradesData = [];
-  
-    function renderTable(container, data, editable = false) {
-      container.innerHTML = '';
-      const table = document.createElement('table');
-      const header = `<tr><th>Ученик</th><th>Математика</th><th>Русский</th><th>Физика</th><th>Химия</th></tr>`;
-      table.innerHTML = header;
-  
-      data.forEach(row => {
-        const tr = document.createElement('tr');
-        row.forEach((cell, i) => {
-          const td = document.createElement('td');
-          td.textContent = cell;
-          if (editable && i > 0) td.contentEditable = true;
-          tr.appendChild(td);
-        });
-        table.appendChild(tr);
-      });
-  
-      container.appendChild(table);
-    }
-  
-    async function loadGrades() {
-      const res = await fetch('http://localhost:3000/grades');
-      const text = await res.text();
-      gradesData = text.trim().split('\n').slice(1).map(line => line.split(','));
-      renderTable(gradesTableBody, gradesData);
-    }
-  
-    editGradesBtn.onclick = () => {
-      renderTable(editableGrades, gradesData, true);
-      modal.style.display = 'block';
-    };
-  
-    closeModal.onclick = () => modal.style.display = 'none';
-    window.onclick = e => e.target == modal ? modal.style.display = 'none' : null;
-  
-    saveGradesBtn.onclick = async () => {
-      const updatedRows = editableGrades.querySelectorAll('tr');
-      gradesData = Array.from(updatedRows).slice(1).map(row => 
-        Array.from(row.children).map(td => td.textContent.trim())
-      );
-  
-      const csv = ['Ученик,Математика,Русский,Физика,Химия', 
-        ...gradesData.map(r => r.join(','))].join('\n');
-  
-      await fetch('http://localhost:3000/grades', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ csv })
-      });
-  
-      modal.style.display = 'none';
-      await loadGrades(); // сразу перезагрузить оценки на сайте
-    };
-  
-    loadGrades();
+  // Sidebar toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const sidebar = document.querySelector('.sidebar');
+  menuBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
   });
+
+  // Modal elements
+  const openBtn    = document.getElementById('add-class-btn');
+  const modal      = document.getElementById('modal');
+  const closeBtn   = modal.querySelector('.close-modal');
+  const saveBtn    = document.getElementById('save-class-btn');
+  const form       = document.getElementById('add-class-form');
+  const inpName    = document.getElementById('class-name');
+  const inpTeacher = document.getElementById('teacher-name');
+  const inpCount   = document.getElementById('student-count');
+
+  // Open modal
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+  });
+
+  // Close modal by × button
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  // Close by clicking outside content
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+
+  // Save form (only validation + close)
+  saveBtn.addEventListener('click', e => {
+    e.preventDefault();
+
+    const name    = inpName.value.trim();
+    const teacher = inpTeacher.value.trim();
+    const count   = inpCount.value.trim();
+
+    // Validation
+    if (!name || !teacher || !count) {
+      alert('Пожалуйста, заполните все поля.');
+      return;
+    }
+    if (isNaN(count) || Number(count) < 1) {
+      alert('Количество учеников должно быть числом ≥ 1.');
+      return;
+    }
+
+    // TODO: здесь можешь шлёпнуть запрос в БД или другую логику
+
+    // Сброс и закрытие
+    form.reset();
+    modal.classList.remove('active');
+  });
+});

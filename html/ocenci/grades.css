@@ -231,3 +231,87 @@ main {
   #editable-grades td[contenteditable="true"] {
     background-color: #e8f0fe;
   }
+  .modal.active {
+    display: flex; /* Можно flex или block, flex будет красиво по центру */
+    align-items: center; 
+    justify-content: center; 
+}
+/* Улучшенная стилизация формы в модалке */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  #add-grade-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--dark-blue);
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"] {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.2s;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 3px rgba(59, 130, 246, 0.5);
+  }
+  
+  #add-grade-form .btn {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+  
+  /* Центрируем контент модалки */
+  .modal.active .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  /* Опционально: задаём фиксированную высоту формы и скролл */
+  .modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .form-group select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    appearance: none;        /* убираем дефолтную стрелку */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,\
+    %3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23333' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+  
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 3px rgba(59, 130, 246, 0.5);
+  }
