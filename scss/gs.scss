@@ -1,3 +1,5 @@
+// gs.scss
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 $blue: #3B82F6;
@@ -11,7 +13,7 @@ $text: #333;
   box-sizing: border-box;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -20,6 +22,7 @@ html, body {
   overflow-x: hidden;
 }
 
+// Бургер-меню
 .menu-btn {
   position: fixed;
   top: 15px;
@@ -29,6 +32,7 @@ html, body {
   color: $dark-blue;
 }
 
+// Сайдбар
 .sidebar {
   position: fixed;
   top: 0;
@@ -71,210 +75,260 @@ html, body {
   }
 }
 
+// Основной контент
 main {
   padding: 60px 20px;
   max-width: 1200px;
 
-  @media (min-width: 768px) {
-    margin-left: 220px;
+  .intro {
+    text-align: center;
+    margin-bottom: 50px;
 
-    .sidebar {
-      left: 0;
-      width: 200px;
+    h1 {
+      font-size: 2.5rem;
+      color: $dark-blue;
     }
 
-    .menu-btn {
-      display: none;
+    p {
+      font-size: 1.1rem;
+      color: #555;
     }
   }
-}
 
-.intro {
-  text-align: center;
-  margin-bottom: 50px;
+  .classes-section {
+    .classes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
 
-  h1 {
-    font-size: 2.5rem;
-    color: $dark-blue;
+      h2 {
+        font-size: 2rem;
+        color: $dark-blue;
+        margin: 0;
+      }
+
+      .btn {
+        background: $blue;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+
+        &:hover {
+          background: $dark-blue;
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    .classes-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+      .class-card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+          margin-bottom: 10px;
+          color: $blue;
+        }
+
+        .teacher-name {
+          color: #666;
+          font-size: 0.95rem;
+          margin-bottom: 10px;
+        }
+
+        .count-badge {
+          background: $dark-blue;
+          color: #fff;
+          border-radius: 20px;
+          padding: 4px 12px;
+          font-size: 0.85rem;
+        }
+      }
+    }
   }
 
-  p {
-    font-size: 1.1rem;
-    color: #555;
-  }
-}
-
-.classes-section {
-  .classes-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  .news-section {
+    margin-top: 60px;
 
     h2 {
       font-size: 2rem;
       color: $dark-blue;
-      margin: 0;
+      margin-bottom: 20px;
+      text-align: left;
     }
 
-    .btn {
-      background: $blue;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 16px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+    .news-container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 10px;
 
-      &:hover {
-        background: $dark-blue;
-        transform: translateY(-2px);
-      }
-    }
-  }
-
-  .classes-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-
-    .class-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      &::-webkit-scrollbar {
+        height: 8px;
       }
 
-      h3 {
-        margin-bottom: 10px;
-        color: $blue;
+      &::-webkit-scrollbar-thumb {
+        background: $blue;
+        border-radius: 10px;
       }
 
-      .teacher-name {
-        color: #666;
-        font-size: 0.95rem;
-        margin-bottom: 10px;
+      &::-webkit-scrollbar-track {
+        background: $gray;
       }
 
-      .count-badge {
-        background: $dark-blue;
-        color: #fff;
-        border-radius: 20px;
-        padding: 4px 12px;
-        font-size: 0.85rem;
+      .news-item {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        flex: 0 0 280px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+          margin-bottom: 10px;
+          color: $blue;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: #555;
+        }
       }
     }
   }
 }
 
-.news-section {
-  margin-top: 60px;
-
-  h2 {
-    font-size: 2rem;
-    color: $dark-blue;
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  .news-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-
-    .news-item {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      flex: 0 0 280px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-      }
-
-      h3 {
-        margin-bottom: 10px;
-        color: $blue;
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: #555;
-      }
-    }
-
-    &::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: $blue;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: $gray;
-    }
-  }
-}
-
-/* Modal styles */
+// Модалка для добавления класса
 .modal {
   display: none;
   position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-.modal-content {
-  background: #fff;
-  margin: 5% auto;
   padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  position: relative;
-}
+  align-items: center;
+  justify-content: center;
 
-.close-modal {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 28px;
-  cursor: pointer;
-}
+  &.active {
+    display: flex;
+  }
 
-#editable-grades {
-  margin: 20px 0;
-
-  table {
+  .modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
     width: 100%;
-    border-collapse: collapse;
+    max-width: 480px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      color: $dark-blue;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: $dark-blue;
       text-align: center;
     }
 
-    td[contenteditable="true"] {
-      background: #e8f0fe;
+    #add-class-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+          font-size: 0.95rem;
+          color: $dark-blue;
+        }
+
+        input {
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.2s, box-shadow 0.2s;
+
+          &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+          }
+        }
+      }
+
+      #save-class-btn {
+        align-self: flex-end;
+        background: $blue;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.1s;
+
+        &:hover {
+          background: $dark-blue;
+          transform: translateY(-1px);
+        }
+      }
     }
   }
 }
 
-#save-grades-btn {
-  display: block;
-  margin: 0 auto;
+@media (min-width: 768px) {
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  .menu-btn {
+    display: none;
+  }
+  main {
+    margin-left: 220px;
+  }
 }

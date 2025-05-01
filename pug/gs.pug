@@ -1,10 +1,11 @@
+// gs.pug
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Школьный журнал — Главная
-    link(rel="stylesheet", href="/html/glavnaia_stranica/gs.pug")
+    link(rel="stylesheet", href="gs.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -17,23 +18,36 @@ html(lang="ru")
         li
           a(href="gs.html")
             span.material-icons home
-            | Главная страница
+            |  Главная
         li
           a(href="#")
             span.material-icons class
-            | Страница класса
+            |  Страница класса
         li
-          a(href="grades.html")
+          a(href="/html/ocenci/grades.html")
             span.material-icons grade
-            | Оценки
+            |  Оценки
         li
           a(href="#")
             span.material-icons login
-            | Выход
-        li
-          a(href="admin.html")
-            span.material-icons admin_panel_settings
-            | Админка
+            |  Выход
+
+    // Модалка для добавления класса
+    #modal.modal
+      .modal-content
+        span.close-modal &times;
+        h2 Добавить класс
+        form#add-class-form
+          .form-group
+            label(for="class-name") Название класса
+            input#class-name(type="text", name="class-name")
+          .form-group
+            label(for="teacher-name") ФИО классного руководителя
+            input#teacher-name(type="text", name="teacher-name")
+          .form-group
+            label(for="student-count") Кол-во учеников
+            input#student-count(type="number", name="student-count", min="1")
+        button#save-class-btn.btn Сохранить
 
     // Основной контент
     main
@@ -41,14 +55,28 @@ html(lang="ru")
         h1 Школьный электронный журнал
         p Легко и удобно следить за успеваемостью и домашними заданиями онлайн.
 
-      // Секция классов
       section.classes-section
         .classes-header
           h2 Наши классы
           button#add-class-btn.btn + Добавить класс
         #classes-container.classes-grid
+          .class-card
+            h3 7А класс
+            .teacher-name Кл. рук.: Иванова Е.В.
+            .count-badge 25 учеников
+          .class-card
+            h3 7Б класс
+            .teacher-name Кл. рук.: Петрова О.С.
+            .count-badge 28 учеников
+          .class-card
+            h3 8А класс
+            .teacher-name Кл. рук.: Сидорова А.М.
+            .count-badge 27 учеников
+          .class-card
+            h3 8Б класс
+            .teacher-name Кл. рук.: Кузнецова Н.В.
+            .count-badge 26 учеников
 
-      // Новостная лента
       section.news-section
         h2 Новости школы
         .news-container
