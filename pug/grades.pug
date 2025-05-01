@@ -1,8 +1,9 @@
+// grades.pug
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     title Школьный журнал — Оценки
     link(rel="stylesheet", href="grades.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
@@ -15,7 +16,7 @@ html(lang="ru")
     nav.sidebar
       ul
         li
-          a(href="gs.html")
+          a(href="../glavnaia_stranica/gs.html")
             span.material-icons home
             |  Главная
         li
@@ -23,7 +24,7 @@ html(lang="ru")
             span.material-icons class
             |  Класс
         li
-          a.active(href="grades.html")
+          a(href="grades.html", class="active")
             span.material-icons grade
             |  Оценки
         li
@@ -40,7 +41,8 @@ html(lang="ru")
       section.grades
         .grades-header
           h1 📊 Таблица оценок
-          button#edit-grades-btn.btn Добавить оценки
+          button#add-grade-btn.btn Добавить оценки
+
         table
           thead
             tr
@@ -50,13 +52,51 @@ html(lang="ru")
               th Физика
               th Химия
           tbody
+            tr
+              td Иванов И.И.
+              td 5
+              td 4
+              td 3
+              td 5
+            tr
+              td Петрова О.С.
+              td 4
+              td 5
+              td 4
+              td 4
+            tr
+              td Денис Ч.В.
+              td 5
+              td 4
+              td 3
+              td 5
+            tr
+              td Петрова О.С.
+              td 4
+              td 5
+              td 4
+              td 4
 
-      // Модальное окно для редактирования
-      #modal.modal
-        .modal-content
-          span.close-modal &times;
-          h2 Редактировать оценки
-          #editable-grades
-          button#save-grades-btn.btn Сохранить изменения
+    // Модалка «Добавить оценки»
+    #modal.modal
+      .modal-content
+        span.close-modal &times;
+        h2 Добавить оценку
+        form#add-grade-form
+          .form-group
+            label(for="student-name") ФИО ученика
+            input#student-name(type="text", name="student-name")
+          .form-group
+            label(for="grade-value") Оценка
+            input#grade-value(type="number", name="grade-value", min="1", max="5")
+          .form-group
+            label(for="subject") Предмет
+            select#subject(name="subject")
+              option(value="" disabled selected) – Выберите предмет –
+              option(value="math") Математика
+              option(value="rus") Русский язык
+              option(value="phys") Физика
+              option(value="chem") Химия
+          button.btn(type="button") Сохранить
 
-    script(src="grades.js", defer)
+    script(src="grades.js")
