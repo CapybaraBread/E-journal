@@ -5,7 +5,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Школьный журнал — Главная
-    link(rel="stylesheet", href="gs.css")
+    link(rel="stylesheet", href=require("/scss/gs.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -32,7 +32,7 @@ html(lang="ru")
             span.material-icons login
             |  Выход
 
-    // Модалка для добавления класса
+    // Модалка «Добавить класс»
     #modal.modal
       .modal-content
         span.close-modal &times;
@@ -40,16 +40,16 @@ html(lang="ru")
         form#add-class-form
           .form-group
             label(for="class-name") Название класса
-            input#class-name(type="text", name="class-name")
+            input#class-name(type="text" name="class-name")
           .form-group
-            label(for="teacher-name") ФИО классного руководителя
-            input#teacher-name(type="text", name="teacher-name")
+            label(for="teacher-name") ФИО кл. руководителя
+            input#teacher-name(type="text" name="teacher-name")
           .form-group
             label(for="student-count") Кол-во учеников
-            input#student-count(type="number", name="student-count", min="1")
-        button#save-class-btn.btn Сохранить
+            input#student-count(type="number" name="student-count" min="1")
+        button#save-class-btn.btn(type="button") Сохранить
 
-    // Основной контент
+    // Контент
     main
       section.intro
         h1 Школьный электронный журнал
@@ -58,24 +58,24 @@ html(lang="ru")
       section.classes-section
         .classes-header
           h2 Наши классы
-          button#add-class-btn.btn + Добавить класс
+          button#add-class-btn.btn(type="button") Добавить класс
         #classes-container.classes-grid
           .class-card
             h3 7А класс
             .teacher-name Кл. рук.: Иванова Е.В.
-            .count-badge 25 учеников
+            span.count-badge 25 учеников
           .class-card
             h3 7Б класс
             .teacher-name Кл. рук.: Петрова О.С.
-            .count-badge 28 учеников
+            span.count-badge 28 учеников
           .class-card
             h3 8А класс
             .teacher-name Кл. рук.: Сидорова А.М.
-            .count-badge 27 учеников
+            span.count-badge 27 учеников
           .class-card
             h3 8Б класс
             .teacher-name Кл. рук.: Кузнецова Н.В.
-            .count-badge 26 учеников
+            span.count-badge 26 учеников
 
       section.news-section
         h2 Новости школы
@@ -90,4 +90,4 @@ html(lang="ru")
             h3 Родительское собрание
             p Напоминаем, что собрание состоится в среду в 18:00.
 
-    script(src="gs.js", defer)
+    script(src=require("gs.js"))
