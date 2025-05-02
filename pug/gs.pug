@@ -1,0 +1,93 @@
+// gs.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Школьный журнал — Главная
+    link(rel="stylesheet", href=require("/scss/gs.scss"))
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  body
+    // Бургер-меню
+    .menu-btn
+      span.material-icons menu
+
+    // Сайдбар
+    nav.sidebar
+      ul
+        li
+          a(href="gs.html")
+            span.material-icons home
+            |  Главная
+        li
+          a(href="#")
+            span.material-icons class
+            |  Страница класса
+        li
+          a(href="/html/ocenci/grades.html")
+            span.material-icons grade
+            |  Оценки
+        li
+          a(href="#")
+            span.material-icons login
+            |  Выход
+
+    // Модалка «Добавить класс»
+    #modal.modal
+      .modal-content
+        span.close-modal &times;
+        h2 Добавить класс
+        form#add-class-form
+          .form-group
+            label(for="class-name") Название класса
+            input#class-name(type="text" name="class-name")
+          .form-group
+            label(for="teacher-name") ФИО кл. руководителя
+            input#teacher-name(type="text" name="teacher-name")
+          .form-group
+            label(for="student-count") Кол-во учеников
+            input#student-count(type="number" name="student-count" min="1")
+        button#save-class-btn.btn(type="button") Сохранить
+
+    // Контент
+    main
+      section.intro
+        h1 Школьный электронный журнал
+        p Легко и удобно следить за успеваемостью и домашними заданиями онлайн.
+
+      section.classes-section
+        .classes-header
+          h2 Наши классы
+          button#add-class-btn.btn(type="button") Добавить класс
+        #classes-container.classes-grid
+          .class-card
+            h3 7А класс
+            .teacher-name Кл. рук.: Иванова Е.В.
+            span.count-badge 25 учеников
+          .class-card
+            h3 7Б класс
+            .teacher-name Кл. рук.: Петрова О.С.
+            span.count-badge 28 учеников
+          .class-card
+            h3 8А класс
+            .teacher-name Кл. рук.: Сидорова А.М.
+            span.count-badge 27 учеников
+          .class-card
+            h3 8Б класс
+            .teacher-name Кл. рук.: Кузнецова Н.В.
+            span.count-badge 26 учеников
+
+      section.news-section
+        h2 Новости школы
+        .news-container
+          .news-item
+            h3 Открытие новой лаборатории
+            p С сегодняшнего дня начинает работу новая химическая лаборатория.
+          .news-item
+            h3 Праздник осени
+            p Не пропустите ежегодный школьный фестиваль в пятницу!
+          .news-item
+            h3 Родительское собрание
+            p Напоминаем, что собрание состоится в среду в 18:00.
+
+    script(src=require("gs.js"))

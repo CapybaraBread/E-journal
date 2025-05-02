@@ -11,8 +11,8 @@
     "webpack-dev-server": "^5.2.0"
   },
   "name": "e-journal",
-  "description": "",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "dependencies": {
     "acorn": "^7.4.1",
