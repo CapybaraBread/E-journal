@@ -5,7 +5,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Школьный журнал — Оценки
-    link(rel="stylesheet", href=require("../scss/grades.scss"))
+    link(rel="stylesheet", href=require("/scss/grades.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -16,32 +16,32 @@ html(lang="ru")
     nav.sidebar
       ul
         li
-          a(href=require("gs.pug"))
+          a(href="#")
             span.material-icons home
             |  Главная
         li
-          a(href="class.html")
+          a(href="#")
             span.material-icons class
             |  Класс
         li
-          a(href="grades.html", class="active")
+          a(href="#", class="active")
             span.material-icons grade
             |  Оценки
         li
-          a(href="login.html")
+          a(href="#")
             span.material-icons login
             |  Выход
         li
-          a(href="admin.html")
+          a(href="#")
             span.material-icons admin_panel_settings
             |  Админка
 
-    // Основной контент
+    // Контент
     main
       section.grades
         .grades-header
           h1 📊 Таблица оценок
-          button#add-grade-btn.btn Добавить оценки
+          button#add-grade-btn.btn(type="button") Добавить оценки
 
         table
           thead
@@ -85,10 +85,10 @@ html(lang="ru")
         form#add-grade-form
           .form-group
             label(for="student-name") ФИО ученика
-            input#student-name(type="text", name="student-name")
+            input#student-name(type="text" name="student-name")
           .form-group
             label(for="grade-value") Оценка
-            input#grade-value(type="number", name="grade-value", min="1", max="5")
+            input#grade-value(type="number" name="grade-value" min="1" max="5")
           .form-group
             label(for="subject") Предмет
             select#subject(name="subject")
@@ -99,4 +99,4 @@ html(lang="ru")
               option(value="chem") Химия
           button.btn(type="button") Сохранить
 
-    script(src=require("../grades.js"))
+    script(src=require("grades.js"))
