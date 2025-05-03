@@ -1,66 +1,92 @@
-<!-- gs.pug-->
+<!-- grades.pug-->
 <!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Школьный журнал — Главная</title>
-    <link rel="stylesheet" href="class.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Школьный журнал — Оценки</title>
+    <link rel="stylesheet" href="grades.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body><!-- Бургер-меню-->
     <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
     <nav class="sidebar">
       <ul>
-        <li><a href="gs.html"><span class="material-icons">home</span> Главная</a></li>
-        <li><a href="#"><span class="material-icons">class</span> Страница класса</a></li>
-        <li><a href="/html/ocenci/grades.html"><span class="material-icons">grade</span> Оценки</a></li>
+        <li><a href="#"><span class="material-icons">home</span> Главная</a></li>
+        <li><a href="#"><span class="material-icons">class</span> Класс</a></li>
+        <li><a href="#"><span class="material-icons">star</span> Оценки</a></li>
         <li><a href="#"><span class="material-icons">login</span> Выход</a></li>
+        <li><a href="#"><span class="material-icons">admin_panel_settings</span> Админка</a></li>
       </ul>
-    </nav><!-- Модалка «Добавить класс»-->
-    <div class="modal" id="modal">
-      <div class="modal-content"><span class="close-modal">&times;</span>
-        <h2>Добавить класс</h2>
-        <form id="add-class-form">
-          <div class="form-group"><label for="class-name">Название класса</label><input id="class-name" type="text"
-              name="class-name"></div>
-          <div class="form-group"><label for="teacher-name">ФИО кл. руководителя</label><input id="teacher-name"
-              type="text" name="teacher-name"></div>
-          <div class="form-group"><label for="student-count">Кол-во учеников</label><input id="student-count"
-              type="number" name="student-count" min="1"></div>
-        </form><button class="btn" id="save-class-btn" type="button">Сохранить</button>
-      </div>
-    </div><!-- Контент-->
+    </nav><!-- Контент-->
     <main>
-      <section class="intro">
-        <h1>Школьный электронный журнал</h1>
-        <p>Легко и удобно следить за успеваемостью и домашними заданиями онлайн.</p>
-      </section>
-      <section class="classes-section">
-        <div class="classes-header">
-          <h2>Наши классы</h2><button class="btn" id="add-class-btn" type="button">Добавить класс</button>
+      <section class="grades">
+        <div class="grades-header">
+          <h1 id="class_grades">7B класс</h1><button class="btn" id="add-grade-btn" type="button">Добавить
+            оценки</button>
         </div>
-        <div class="classes-grid" id="classes-container">
-          <div class="class-card">
-            <h3>7А класс</h3>
-            <div class="teacher-name">Кл. рук.: Иванова Е.В.</div><span class="count-badge">25 учеников</span>
-          </div>
-          <div class="class-card">
-            <h3>7Б класс</h3>
-            <div class="teacher-name">Кл. рук.: Петрова О.С.</div><span class="count-badge">28 учеников</span>
-          </div>
-          <div class="class-card">
-            <h3>8А класс</h3>
-            <div class="teacher-name">Кл. рук.: Сидорова А.М.</div><span class="count-badge">27 учеников</span>
-          </div>
-          <div class="class-card">
-            <h3>8Б класс</h3>
-            <div class="teacher-name">Кл. рук.: Кузнецова Н.В.</div><span class="count-badge">26 учеников</span>
-          </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th>Математика</th>
+              <th>Русский</th>
+              <th>Физика</th>
+              <th>Химия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Иванов И.И.</td>
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Петрова О.С.</td>
+              <td>4</td>
+              <td>5</td>
+              <td>4</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Денис Ч.В.</td>
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Петрова О.С.</td>
+              <td>4</td>
+              <td>5</td>
+              <td>4</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+      </section><!-- Модалка «Добавить оценки»-->
+      <div class="modal" id="modal">
+        <div class="modal-content"><span class="close-modal">&times;</span>
+          <h2>Добавить оценку</h2>
+          <form id="add-grade-form">
+            <div class="form-group"><label for="student-name">ФИО ученика</label><input id="student-name" type="text"
+                name="student-name"></div>
+            <div class="form-group"><label for="grade-value">Оценка</label><input id="grade-value" type="number"
+                name="grade-value" min="1" max="5"></div>
+            <div class="form-group"><label for="subject">Предмет</label><select id="subject" name="subject">
+                <option value="" disabled selected>– Выберите предмет –</option>
+                <option value="math">Математика</option>
+                <option value="rus">Русский язык</option>
+                <option value="phys">Физика</option>
+                <option value="chem">Химия</option>
+              </select></div><button class="btn" type="button">Сохранить</button>
+          </form>
         </div>
-      </section>
+      </div>
       <section class="news-section">
-        <h2>Новости школы</h2>
+        <h2>Новости класса</h2>
         <div class="news-container">
           <div class="news-item">
             <h3>Открытие новой лаборатории</h3>
@@ -77,6 +103,6 @@
         </div>
       </section>
     </main>
-    <script src="../Js/gs.js"></script>
+    <script src="C:/Users/User/Desktop/E-journal/Js/grades.js"></script>
   </body>
 </html>
