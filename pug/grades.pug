@@ -5,7 +5,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Школьный журнал — Оценки
-    link(rel="stylesheet", href=require("/scss/grades.scss"))
+    link(rel="stylesheet", href=require("../scss/grades.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
   body
     // Бургер-меню
@@ -98,5 +98,18 @@ html(lang="ru")
               option(value="phys") Физика
               option(value="chem") Химия
           button.btn(type="button") Сохранить
+    
+    section.news-section
+        h2 Новости класса
+        .news-container
+          .news-item
+            h3 Открытие новой лаборатории
+            p С сегодняшнего дня начинает работу новая химическая лаборатория.
+          .news-item
+            h3 Праздник осени
+            p Не пропустите ежегодный школьный фестиваль в пятницу!
+          .news-item
+            h3 Родительское собрание
+            p Напоминаем, что собрание состоится в среду в 18:00.
 
-    script(src=require("grades.js"))
+    script(src=require("../Js/grades.js"))
