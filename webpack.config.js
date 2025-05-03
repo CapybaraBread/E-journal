@@ -13,7 +13,7 @@ module.exports = {
     target,
     devtool,
     entry: {
-        index: path.resolve(__dirname, 'pug/reg.pug')
+        index: path.resolve(__dirname, 'pug/grades.pug')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
