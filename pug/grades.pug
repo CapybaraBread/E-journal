@@ -24,8 +24,8 @@ html(lang="ru")
             span.material-icons class
             |  Класс
         li
-          a(href="#", class="active")
-            span.material-icons grade
+          a(href="#")
+            span.material-icons star
             |  Оценки
         li
           a(href="#")
@@ -40,7 +40,7 @@ html(lang="ru")
     main
       section.grades
         .grades-header
-          h1 📊 Таблица оценок
+          h1#class_grades 7B класс
           button#add-grade-btn.btn(type="button") Добавить оценки
 
         table
@@ -77,29 +77,29 @@ html(lang="ru")
               td 4
               td 4
 
-    // Модалка «Добавить оценки»
-    #modal.modal
-      .modal-content
-        span.close-modal &times;
-        h2 Добавить оценку
-        form#add-grade-form
-          .form-group
-            label(for="student-name") ФИО ученика
-            input#student-name(type="text" name="student-name")
-          .form-group
-            label(for="grade-value") Оценка
-            input#grade-value(type="number" name="grade-value" min="1" max="5")
-          .form-group
-            label(for="subject") Предмет
-            select#subject(name="subject")
-              option(value="" disabled selected) – Выберите предмет –
-              option(value="math") Математика
-              option(value="rus") Русский язык
-              option(value="phys") Физика
-              option(value="chem") Химия
-          button.btn(type="button") Сохранить
-    
-    section.news-section
+      // Модалка «Добавить оценки»
+      #modal.modal
+        .modal-content
+          span.close-modal &times;
+          h2 Добавить оценку
+          form#add-grade-form
+            .form-group
+              label(for="student-name") ФИО ученика
+              input#student-name(type="text" name="student-name")
+            .form-group
+              label(for="grade-value") Оценка
+              input#grade-value(type="number" name="grade-value" min="1" max="5")
+            .form-group
+              label(for="subject") Предмет
+              select#subject(name="subject")
+                option(value="" disabled selected) – Выберите предмет –
+                option(value="math") Математика
+                option(value="rus") Русский язык
+                option(value="phys") Физика
+                option(value="chem") Химия
+            button.btn(type="button") Сохранить
+
+      section.news-section
         h2 Новости класса
         .news-container
           .news-item
@@ -112,4 +112,4 @@ html(lang="ru")
             h3 Родительское собрание
             p Напоминаем, что собрание состоится в среду в 18:00.
 
-    script(src=require("../Js/grades.js"))
+    script(src=require("grades.js"))
