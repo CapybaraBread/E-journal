@@ -91,7 +91,7 @@ nav#sidebar,
    Основной контейнер (mobile-first)
 ----------------------------------- */
 main {
-  padding: 60px 20px;
+  padding: 4vh 2vh;
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
@@ -158,6 +158,7 @@ section.classes-section {
   }
 
   .class-card {
+    max-width: 300px;
     background: $white;
     border-radius: 10px;
     padding: 20px;
@@ -249,7 +250,7 @@ section.news-section {
   p {
     margin: 0;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: normal;
     color: darken($text, 20%);
   }
 }
