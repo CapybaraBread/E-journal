@@ -12,8 +12,7 @@
   },
   "name": "e-journal",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "dependencies": {
     "acorn": "^7.4.1",
     "asap": "^2.0.6",
@@ -70,5 +69,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
