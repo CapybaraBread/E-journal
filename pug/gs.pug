@@ -44,9 +44,6 @@ html(lang="ru")
           .form-group
             label(for="teacher-name") ФИО кл. руководителя
             input#teacher-name(type="text" name="teacher-name")
-          .form-group
-            label(for="student-count") Кол-во учеников
-            input#student-count(type="number" name="student-count" min="1")
         button#save-class-btn.btn(type="button") Сохранить
 
     // Контент
@@ -58,6 +55,7 @@ html(lang="ru")
       section.classes-section
         .classes-header
           h2 Наши классы
+          .indefined
           button#add-class-btn.btn(type="button") Добавить класс
         #classes-container.classes-grid
           .class-card

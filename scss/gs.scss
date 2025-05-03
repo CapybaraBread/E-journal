@@ -96,6 +96,10 @@ main {
   max-width: 1600px;
   margin: 0 auto;
 }
+.indefined{
+  background-color: #fff;
+  flex-grow: 3;
+}
 
 /* -----------------------------------
    Intro
@@ -125,7 +129,6 @@ section.classes-section {
 
   .classes-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 
