@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const form       = document.getElementById('add-class-form');
   const inpName    = document.getElementById('class-name');
   const inpTeacher = document.getElementById('teacher-name');
-  const inpCount   = document.getElementById('student-count');
 
   // Open modal
   openBtn.addEventListener('click', () => {
@@ -39,15 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const name    = inpName.value.trim();
     const teacher = inpTeacher.value.trim();
-    const count   = inpCount.value.trim();
 
     // Validation
-    if (!name || !teacher || !count) {
+    if (!name || !teacher) {
       alert('Пожалуйста, заполните все поля.');
-      return;
-    }
-    if (isNaN(count) || Number(count) < 1) {
-      alert('Количество учеников должно быть числом ≥ 1.');
       return;
     }
 
