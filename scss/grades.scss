@@ -315,3 +315,46 @@ main {
     }
   }
 }
+/* 1) Расставляем флекс и выравнивание */
+.header {
+  display: flex;
+  justify-content: space-between; /* распределяем logo ↔ профиль */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: relative; /* нужно, если у вас есть абсолютные дочерние элементы */
+}
+
+/* 2) Делаем .user-profile статичным флекс-элементом */
+.header .user-profile {
+  position: static;      /* больше не абсолют */
+  margin-left: auto;     /* отодвинет профиль вправо */
+  display: flex;
+  align-items: center;
+  background: #fff;      /* белая «подушка» */
+  padding: 0.2rem 0.5rem;/* небольшой отступ вокруг */
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  /* z-index уже не нужен */
+}
+
+/* 3) Стили аватара и имени */
+.header .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header .username {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;  /* не даст имени разрываться */
+}
+
+/* 4) Подвиньте основной контент чуть ниже шапки, если нужно */
+.main {
+  margin-top: 1rem; /* или больше, под ваши паддинги шапки */
+}

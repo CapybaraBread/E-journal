@@ -7,6 +7,10 @@ html(lang="ru")
     title Школьный журнал — Оценки
     link(rel="stylesheet", href=require("/scss/grades.scss"))
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  header.header
+    .user-profile
+      img.avatar(src="https://i.pravatar.cc/40" alt="Аватар пользователя")
+      span.username Иван И.
   body
     // Бургер-меню
     .menu-btn
@@ -112,4 +116,4 @@ html(lang="ru")
             h3 Родительское собрание
             p Напоминаем, что собрание состоится в среду в 18:00.
 
-    script(src=require("grades.js"))
+    script(src="grades.js")

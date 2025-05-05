@@ -400,3 +400,25 @@ section.news-section {
     padding: 40px;
   }
 }
+// вверху, чтобы работало внутри header
+.header { position: relative; }
+
+.user-profile {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  img.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  span.username {
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #1A1A1A;
+  }
+}
