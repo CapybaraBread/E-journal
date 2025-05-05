@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -159,7 +163,7 @@ section.classes-section #classes-container.classes-grid {
   justify-content: left;
 }
 section.classes-section .class-card {
-  max-width: 300px;
+  width: 17vw;
   margin-right: 4vw;
   background: #fff;
   border-radius: 10px;
