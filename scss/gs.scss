@@ -138,6 +138,21 @@ section.classes-section {
       margin: 0;
     }
 
+    #add-stydent-btn {
+      background: $blue;
+      color: $white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      
+      &:hover {
+        background: $dark-blue;
+        transform: translateY(-2px);
+      }
+    }
+
     #add-class-btn {
       background: $blue;
       color: $white;
