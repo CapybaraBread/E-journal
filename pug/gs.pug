@@ -41,6 +41,19 @@ html(lang="ru")
             label(for="teacher-name") ФИО кл. руководителя
             input#teacher-name(type="text" name="teacher-name")
         button#save-class-btn.btn(type="button") Сохранить
+    
+    #modal-stydent.modal
+      .modal-stydent-content
+        span.close-modal &times;
+        h2 Добавить ученика
+        form#add-stydent-form
+          .form-group
+            label(for="class-name") Название класса
+            input#class-name-stydent(type="text" name="class-name")
+          .form-group
+            label(for="stydent-name") ФИО ученика
+            input#stydent-name(type="text" name="stydent-name")
+        button#save-stydent-btn.btn(type="button") Сохранить
 
     // Контент
     main
@@ -76,3 +89,4 @@ html(lang="ru")
             p С сегодняшнего дня начинает работу новая химическая лаборатория.
 
     script(src=require("/Js/gs.js"))
+    script(src=require("/Js/gs-stydent.js"))
