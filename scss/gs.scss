@@ -155,13 +155,16 @@ section.classes-section {
   }
 
   #classes-container.classes-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    // gap: 20px;
+    // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   .class-card {
     max-width: 300px;
+    margin-right: 4vw;
     background: $white;
     border-radius: 10px;
     padding: 20px;
@@ -337,27 +340,25 @@ section.news-section {
           }
         }
       }
-
-      #save-class-btn {
-        align-self: flex-end;
-        background: $blue;
-        color: $white;
-        border: none;
-        border-radius: 6px;
-        padding: 10px 20px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.2s, transform 0.1s;
-
-        &:hover {
-          background: $dark-blue;
-          transform: translateY(-1px);
-        }
-      }
     }
   }
 }
+#save-class-btn {
+  align-self: center;
+  background: $blue;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
 
+  &:hover {
+    background: $dark-blue;
+    transform: translateY(-1px);
+  }
+}
 /* -----------------------------------
    Responsive Breakpoints
 ----------------------------------- */

@@ -141,12 +141,13 @@ section.classes-section .classes-header #add-class-btn:hover {
   transform: translateY(-2px);
 }
 section.classes-section #classes-container.classes-grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 section.classes-section .class-card {
   max-width: 300px;
+  margin-right: 4vw;
   background: #fff;
   border-radius: 10px;
   padding: 20px;
@@ -306,8 +307,9 @@ section.news-section h2 {
   border-color: #3B82F6;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
-#modal.modal .modal-content form#add-class-form #save-class-btn {
-  align-self: flex-end;
+
+#save-class-btn {
+  align-self: center;
   background: #3B82F6;
   color: #fff;
   border: none;
@@ -317,7 +319,7 @@ section.news-section h2 {
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
 }
-#modal.modal .modal-content form#add-class-form #save-class-btn:hover {
+#save-class-btn:hover {
   background: #1E40AF;
   transform: translateY(-1px);
 }

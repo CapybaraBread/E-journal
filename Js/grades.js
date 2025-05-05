@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (openBtn && modal && closeBtn) {
     // открыть
-    openBtn.addEventListener('click', () => modal.classList.add('active'));
+    openBtn.addEventListener('click', () => modal.classList.add('open'));
 
     // закрыть по ×
-    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+    closeBtn.addEventListener('click', () => modal.classList.remove('open'));
 
     // закрыть по фону
     modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('active');
+      if (e.target === modal) modal.classList.remove('open');
     });
   } else {
     console.warn('Modal или кнопка не найдены. Проверь ID/class.');
