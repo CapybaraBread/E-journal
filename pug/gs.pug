@@ -11,7 +11,7 @@ html(lang="ru")
   header.header
       // …твой menu + logo
       .user-profile
-        img.avatar(src="https://i.pravatar.cc/40" alt="Аватар пользователя")
+        img.avatar(src="https://www.otiss.co.uk/w/wp-content/uploads/2023/04/users-single.jpg" alt="Аватар пользователя")
         span.username Иван И.
   body
     // Бургер-меню
@@ -74,15 +74,15 @@ html(lang="ru")
           button#add-stydent-btn.btn(type="button", style='margin-right: 1vw') Добавить ученика к классу
           button#add-class-btn.btn(type="button") Добавить класс
         #classes-container.classes-grid
-          .class-card
+          a.class-card
             h3 7А класс
             .teacher-name Кл. рук.: Иванова Е.В.
             span.count-badge 25 учеников
-          .class-card
+          a.class-card
             h3 7А класс
             .teacher-name Кл. рук.: Иванова Е.В.
             span.count-badge 25 учеников
-          .class-card
+          a.class-card
             h3 7А класс
             .teacher-name Кл. рук.: Иванова Е.В.
             span.count-badge 25 учеников
@@ -94,5 +94,5 @@ html(lang="ru")
             h3 Открытие новой лаборатории
             p С сегодняшнего дня начинает работу новая химическая лаборатория.
 
-    script(src=require("/Js/gs.js"))
-    script(src=require("/Js/gs-stydent.js"))
+    script(src="/Js/gs.js")
+    script(src="/Js/gs-stydent.js")

@@ -188,6 +188,8 @@ section.classes-section {
     padding: 20px;
     box-shadow: 0 4px 15px $shadow;
     transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    cursor: pointer;
 
     &:hover {
       transform: translateY(-5px);
