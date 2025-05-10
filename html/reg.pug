@@ -1,0 +1,14 @@
+mixin topic-card(type, text)
+    p.form_text=text 
+    input(type=type, required)
+
+main
+    div.registration_content
+        h1 Регистрация
+        form.form_content
+            +topic-card('text', "ФИО")
+            +topic-card('text', "Логин")
+            +topic-card('password', "Пароль")
+            +topic-card('password', "Повторить пароль")
+            button(type="submit") Зарегистрироваться
+            a.url_avtor(href="/") Уже есть аккаунт?

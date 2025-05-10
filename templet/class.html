@@ -1,0 +1,106 @@
+<!-- grades.pug-->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Школьный журнал — Оценки</title>
+    <link rel="stylesheet" href="grades.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body><!-- Бургер-меню-->
+    <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
+    <nav class="sidebar">
+      <ul>
+        <li><a href="#"><span class="material-icons">home</span> Главная</a></li>
+        <li><a href="#"><span class="material-icons">class</span> Страница класса</a></li>
+        <li><a href="#"><span class="material-icons">login</span> Выход</a></li>
+      </ul>
+    </nav><!-- Контент-->
+    <main>
+      <section class="grades">
+        <div class="grades-header">
+          <h1 id="class_grades">7B класс</h1><button class="btn" id="add-grade-btn" type="button">Добавить
+            оценки</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Ученик</th>
+              <th>Математика</th>
+              <th>Русский</th>
+              <th>Физика</th>
+              <th>Химия</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Иванов И.И.</td>
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Петрова О.С.</td>
+              <td>4</td>
+              <td>5</td>
+              <td>4</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Денис Ч.В.</td>
+              <td>5</td>
+              <td>4</td>
+              <td>3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Петрова О.С.</td>
+              <td>4</td>
+              <td>5</td>
+              <td>4</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+      </section><!-- Модалка «Добавить оценки»-->
+      <div class="modal" id="modal">
+        <div class="modal-content"><span class="close-modal">&times;</span>
+          <h2>Добавить оценку</h2>
+          <form id="add-grade-form">
+            <div class="form-group"><label for="student-name">ФИО ученика</label><input id="student-name" type="text"
+                name="student-name"></div>
+            <div class="form-group"><label for="grade-value">Оценка</label><input id="grade-value" type="number"
+                name="grade-value" min="1" max="5"></div>
+            <div class="form-group"><label for="subject">Предмет</label><select id="subject" name="subject">
+                <option value="" disabled selected>– Выберите предмет –</option>
+                <option value="math">Математика</option>
+                <option value="rus">Русский язык</option>
+                <option value="phys">Физика</option>
+                <option value="chem">Химия</option>
+              </select></div><button class="btn" type="button">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <section class="news-section">
+        <h2>Новости класса</h2>
+        <div class="news-container">
+          <div class="news-item">
+            <h3>Открытие новой лаборатории</h3>
+            <p>С сегодняшнего дня начинает работу новая химическая лаборатория.</p>
+          </div>
+          <div class="news-item">
+            <h3>Праздник осени</h3>
+            <p>Не пропустите ежегодный школьный фестиваль в пятницу!</p>
+          </div>
+          <div class="news-item">
+            <h3>Родительское собрание</h3>
+            <p>Напоминаем, что собрание состоится в среду в 18:00.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="C:/Users/User/Desktop/E-journal/Js/grades.js"></script>
+  </body>
+</html>

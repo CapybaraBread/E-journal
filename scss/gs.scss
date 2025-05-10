@@ -1,0 +1,547 @@
+// gs.scss
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+$blue: #3B82F6;
+$dark-blue: #1E40AF;
+$gray: #f5f9ff;
+$text: #333;
+$white: #fff;
+$shadow: rgba(0, 0, 0, 0.1);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: $gray;
+  color: $text;
+  overflow-x: hidden;
+}
+
+/* -----------------------------------
+   Бургер-меню
+----------------------------------- */
+button#menu-btn,
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: $dark-blue;
+}
+
+/* -----------------------------------
+   Сайдбар
+----------------------------------- */
+nav#sidebar,
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  background: $blue;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+
+  &.active {
+    left: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        color: $white;
+        text-decoration: none;
+        transition: background 0.3s;
+
+        &:hover,
+        &.active {
+          background: $dark-blue;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+/* -----------------------------------
+   Основной контейнер (mobile-first)
+----------------------------------- */
+main {
+  padding: 4vh 2vh;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.indefined{
+  background-color: #fff;
+  flex-grow: 3;
+}
+
+/* -----------------------------------
+   Intro
+----------------------------------- */
+section.intro {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h1 {
+    font-size: 2.5rem;
+    color: $dark-blue;
+    margin: 0 0 10px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: darken($text, 20%);
+    margin: 0;
+  }
+}
+
+/* -----------------------------------
+   Секция «Наши классы»
+----------------------------------- */
+section.classes-section {
+  margin-bottom: 60px;
+
+  .classes-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 2rem;
+      color: $dark-blue;
+      margin: 0;
+    }
+
+    #add-stydent-btn {
+      background: $blue;
+      color: $white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      
+      &:hover {
+        background: $dark-blue;
+        transform: translateY(-2px);
+      }
+    }
+
+    #add-class-btn {
+      background: $blue;
+      color: $white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+
+      &:hover {
+        background: $dark-blue;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  #classes-container.classes-grid {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    // gap: 20px;
+    // grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .class-card {
+    width: 17vw;
+    margin-right: 4vw;
+    background: $white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px $shadow;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px $shadow;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      color: $blue;
+      font-size: 1.5rem;
+    }
+
+    .teacher-name {
+      font-size: 0.95rem;
+      color: darken($text, 40%);
+      margin-bottom: 10px;
+    }
+
+    .count-badge {
+      display: inline-block;
+      background: $dark-blue;
+      color: $white;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+/* -----------------------------------
+   Секция «Новости»
+----------------------------------- */
+section.news-section {
+  margin-bottom: 60px;
+
+  h2 {
+    font-size: 2rem;
+    color: $dark-blue;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-bottom: 10px;
+  overflow: visible;
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $blue;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $gray;
+  }
+}
+
+.news-item {
+  background: $white;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 0 0 300px;
+  max-width: 300px;
+  box-shadow: 0 4px 12px $shadow;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px $shadow;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    color: $blue;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: darken($text, 20%);
+  }
+}
+
+/* -----------------------------------
+   Модальное окно «Добавить класс»
+----------------------------------- */
+#modal.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: $white;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 20px $shadow;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    span.close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      color: $dark-blue;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: $dark-blue;
+      text-align: center;
+    }
+
+    form#add-class-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+          font-size: 0.95rem;
+          color: $dark-blue;
+        }
+
+        input {
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.2s, box-shadow 0.2s;
+
+          &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+#save-class-btn {
+  align-self: center;
+  background: $blue;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &:hover {
+    background: $dark-blue;
+    transform: translateY(-1px);
+  }
+}
+
+
+
+#modal-stydent.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+
+  &.active {
+    display: flex;
+  }
+
+  .modal-stydent-content {
+    background: $white;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 20px $shadow;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    span.close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 24px;
+      cursor: pointer;
+      color: $dark-blue;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: $dark-blue;
+      text-align: center;
+    }
+
+    form#add-stydent-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+          font-size: 0.95rem;
+          color: $dark-blue;
+        }
+
+        input {
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.2s, box-shadow 0.2s;
+
+          &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+#save-stydent-btn {
+  align-self: center;
+  background: $blue;
+  color: $white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &:hover {
+    background: $dark-blue;
+    transform: translateY(-1px);
+  }
+}
+/* -----------------------------------
+   Responsive Breakpoints
+----------------------------------- */
+@media (min-width: 768px) {
+  /* фиксируем сайдбар и убираем бургер */
+  nav#sidebar,
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  button#menu-btn,
+  .menu-btn {
+    display: none;
+  }
+
+  /* теперь уже считаем ширину main с учётом sidebar */
+  main {
+    margin-left: 220px;
+    padding: 40px 20px;
+    /* <-- вот тут добавили: */
+    width: calc(100% - 220px);
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    margin-left: 240px;
+    /* и для десктопа тоже: */
+    width: calc(100% - 240px);
+  }
+  #classes-container.classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (min-width: 1600px) {
+  main {
+    /* оставляем отступ под сайдбар */
+    margin-left: 240px;
+    /* теперь контейнер реально занимает всё пространство без навбара */
+    width: calc(100% - 240px);
+    /* ограничиваем максимальную ширину, если нужно */
+    max-width: 1800px;
+    padding: 40px;
+  }
+}
+// вверху, чтобы работало внутри header
+.header { position: relative; }
+
+.user-profile {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  img.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  span.username {
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #1A1A1A;
+  }
+}
