@@ -1,0 +1,25 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный журнал</title>
+    <link rel="stylesheet" href="{% static 'css/avtoris.css' %}">
+  </head>
+  <main>
+    <div class="registration_content">
+      <h1>Войти в систему</h1>
+      <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <p class="form_text">Логин</p>
+        {{form.username}}
+        <p class="form_text">Пароль</p>
+        {{form.password}}
+        <button type="submit">Войти</button>
+        <a class = "url_avtor" href="{% url 'registration' %}">Зарегистрироваться</a>
+        {% include "includes/notifications.html" %}
+      </form>
+    </div>
+  </main>
+</html>

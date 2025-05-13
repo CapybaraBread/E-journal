@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Subjects, Classes
+from .models import Classes
+from users.models import Subjects
 
 admin.site.register(Subjects)
 admin.site.register(Classes)

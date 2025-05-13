@@ -1,0 +1,110 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap);
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EBEBF2;
+  height: 100%;
+  width: 100%;
+}
+
+.registration_content {
+  width: 45vw;
+  padding: 5vh 0.5vw;
+  border-radius: 1.125rem;
+  background-color: #fff;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+h1 {
+  font-size: 5vh;
+  margin: 0;
+  font-family: "Acier Sans", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_text {
+  margin-left: 9%;
+  color: #636770;
+  font-weight: 600;
+  font-size: 3vh;
+}
+
+input, button {
+  height: 7vh;
+  margin: auto;
+}
+
+input {
+  width: 80%;
+  border: solid 0.4vh #ebebeb;
+  font-size: 2.5vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  border-radius: 1.25rem;
+  font-weight: 800;
+  transition: all 0.25s;
+}
+
+input:valid {
+  border-color: #2151b8;
+}
+
+button {
+  width: 85%;
+  border-radius: 1.25rem;
+  border: none;
+  font-size: 3vh;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 3vh;
+  text-align: center;
+  line-height: 0.4vh;
+  background-color: #4E80EE;
+  color: #f9f9f9;
+  transition: all 0.25s;
+}
+
+a {
+  color: #4E80EE;
+  font-size: 2.5vh;
+  text-decoration: none;
+  margin-top: 3vh;
+  margin-left: 10%;
+  font-weight: bold;
+  transition: all 0.25s;
+}
+
+input:hover {
+  border: solid 0.4vh #4E80EE;
+}
+
+input:focus {
+  outline: none;
+  border: #2151b8 solid 0.4vh;
+}
+
+button:hover {
+  background-color: #2151b8;
+}
+
+a:hover {
+  color: #2151b8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=avtoris.css.map */
