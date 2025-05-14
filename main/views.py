@@ -8,6 +8,8 @@ from django.http import HttpResponseNotFound
 
 
 def main_page(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('registration'))
     news = News.objects.filter(role="gs")
     classes_info = []
     classes = Classes.objects.all()
@@ -51,6 +53,8 @@ def main_page(request):
 
 
 def grades(request, class_name):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('registration'))
     news = News.objects.filter(role=class_name)
     if request.user.role == "student" and request.user.stud_class.class_name != class_name:
         return HttpResponseRedirect(reverse('grades', kwargs={"class_name": request.user.stud_class.class_name}))
@@ -82,6 +86,8 @@ def grades(request, class_name):
 
 
 def users(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('registration'))
     if request.user.role != "admin":
         return HttpResponseNotFound()
     else:
