@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школьный журнал — Главная</title>
+    <link rel="stylesheet" href="{% static 'css/gs.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <header class="header"><!-- …твой menu + logo-->
+    <div class="user-profile">
+      <button id="user-btn" class="user-btn" type="button">
+        <img class="avatar" src="https://www.otiss.co.uk/w/wp-content/uploads/2023/04/users-single.jpg" alt="Аватар пользователя">
+        <span class="username">{{user.username}}</span>
+      </button>
+      <div id="user-panel" class="user-panel hidden">
+        <p class="user-name">{{user.fio}}</p>
+        <p class="user-role">Роль: {{user.role}}</p>
+        {%if user.role == 'student'%}
+          <p class="user-class">Класс: {{user.stud_class.class_name}}</p>
+        {%endif%}
+      </div>
+    </div>
+  </header>
+  {%if user.role == 'admin' %}
+    <body><!-- Бургер-меню-->
+      <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
+      <nav class="sidebar">
+        <ul>
+          <li><a href="{% url 'main_page'%}"><span class="material-icons">home</span> Главная</a></li>
+          <li><a href="{% url 'users' %}"><span class="material-icons">class</span>Пользователи</a></li>
+          <li><a href="{% url 'logout'%}"><span class="material-icons">login</span> Выход</a></li>
+        </ul>
+      </nav><!-- Модалка «Добавить класс»-->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h2>Добавить класс</h2>
+          <form id="add-class-form" action="{% url 'main_page' %}" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+              <label for="class-name">Название класса</label>
+              {{form_classes.class_name}}
+            </div>
+            <div class="form-group">
+              <label for="teacher-name">ФИО классного руководителя</label>
+              {{form_classes.cl_teacher}}
+            </div>
+            <button  class="btn" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="modal-stydent">
+        <div class="modal-stydent-content"><span class="close-modal">&times;</span>
+          <h2>Добавить ученика к классу</h2>
+          <form id="add-stydent-form" action="{% url 'main_page' %}" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+              <label for="class-name">Название класса</label>
+              {{add_class_form.stud_class}}
+            </div>
+            <div class="form-group">
+              <label for="stydent-name">Ученик</label>
+              {{add_class_form.student}}
+            </div>
+            <button class="btn" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div><!-- Контент-->
+      <main>
+        <section class="intro">
+          <h1>Школьный электронный журнал</h1>
+          <p>Легко и удобно следить за успеваемостью и домашними заданиями онлайн.</p>
+        </section>
+        <section class="classes-section">
+          <div class="classes-header">
+            <h2>Наши классы</h2>
+            <div class="indefined"></div>
+            <button class="btn" id="add-stydent-btn" type="button" style="margin-right: 1vw">Добавить ученика к классу</button>
+            <button class="btn" id="add-class-btn" type="button">Добавить класс</button>
+          </div>
+          <div class="classes-grid" id="classes-container">
+            {%for class_info in classes_info%}
+              <a href="{% url 'grades' class_name=class_info.class.class_name%}" class="class-card">
+                <h3>{{class_info.class.class_name}} класс</h3>
+                <div class="teacher-name">{{class_info.class.cl_teacher}}</div>
+                <span class="count-badge">Учащихся: {{class_info.stud_count}}</span>
+              </a>
+            {%endfor%}
+          </div>
+        </section>
+        <!-- Кнопка «Добавить новость» справа -->
+        <div class="news-action">
+          <button id="add-news-btn" class="btn-add-news">Добавить новость</button>
+        </div>
+
+        <!-- Оверлей -->
+        <div id="overlay" class="overlay"></div>
+
+        <!-- Модалка с формой -->
+        <form id="news-form" class="news-form" action="{% url 'main_page' %}" method="post">
+          {%csrf_token%}
+          <h2 class="news-form__title">Новая новость</h2>
+          <div class="news-form__group">
+            <label for="news-title">Заголовок</label>
+            {{news_form.title}}
+          </div>
+          <div class="news-form__group">
+            <label for="news-desc">Описание</label>
+            {{news_form.text}}
+          </div>
+          <button type="submit" class="news-form__btn">Сохранить</button>
+        </form>
+
+        <section class="news-section">
+          <h2>Новости класса</h2>
+          <div class="news-container">
+            {%for news_note in news%}
+              <div class="news-item">
+                <h3>{{news_note.title}}</h3>
+                <p>{{news_note.text}}</p>
+              </div>
+            {%endfor%}
+          </div>
+        </section>
+      </main>
+      <script src="{% static 'js/gs.js' %}"></script>
+      <script src="{% static 'js/gs-stydent.js' %}"></script>
+    </body>
+  {%elif user.role == 'teacher'%}
+    <body><!-- Бургер-меню-->
+      <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
+      <nav class="sidebar">
+        <ul>
+          <li><a href="{% url 'main_page'%}"><span class="material-icons">home</span> Главная</a></li>
+          <li><a href="{% url 'logout'%}"><span class="material-icons">login</span> Выход</a></li>
+        </ul>
+      </nav>
+      <!-- Контент-->
+      <main>
+        <section class="intro">
+          <h1>Школьный электронный журнал</h1>
+          <p>Легко и удобно следить за успеваемостью и домашними заданиями онлайн.</p>
+        </section>
+        <section class="classes-section">
+          <div class="classes-header">
+            <h2>Наши классы</h2>
+            <div class="indefined"></div><button class="btn" id="add-stydent-btn" type="button"
+              style="margin-right: 1vw">Добавить ученика к классу</button><button class="btn" id="add-class-btn"
+              type="button">Добавить класс</button>
+          </div>
+          <div class="classes-grid" id="classes-container">
+            {%for class_info in classes_info%}
+              <a href="{% url 'grades' class_name=class_info.class.class_name%}" class="class-card">
+                <h3>{{class_info.class.class_name}} класс</h3>
+                <div class="teacher-name">{{class_info.class.cl_teacher}}</div>
+                <span class="count-badge">Учащихся: {{class_info.stud_count}}</span>
+              </a>
+            {%endfor%}
+          </div>
+        </section>
+        <section class="news-section">
+          <h2>Новости класса</h2>
+          <div class="news-container">
+            {%for news_note in news%}
+              <div class="news-item">
+                <h3>{{news_note.title}}</h3>
+                <p>{{news_note.text}}</p>
+              </div>
+            {%endfor%}
+          </div>
+        </section>
+      </main>
+    </body>
+  {%else%}
+    <body><!-- Бургер-меню-->
+      <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
+      <nav class="sidebar">
+        <ul>
+          <li><a href="{% url 'main_page'%}"><span class="material-icons">home</span> Главная</a></li>
+          <li><a href="{% url 'grades' class_name=user.stud_class.class_name%}"><span class="material-icons">class</span> Страница класса</a></li>
+          <li><a href="{% url 'logout'%}"><span class="material-icons">login</span> Выход</a></li>
+        </ul>
+      </nav>
+      <main>
+        <section class="intro">
+          <h1>Школьный электронный журнал</h1>
+          <p>Легко и удобно следить за успеваемостью и домашними заданиями онлайн.</p>
+        </section>
+        <section class="news-section">
+          <h2>Новости школы</h2>
+          <div class="news-container">
+            {%for news_note in news%}
+              <div class="news-item">
+                <h3>{{news_note.title}}</h3>
+                <p>{{news_note.text}}</p>
+              </div>
+            {%endfor%}
+          </div>
+        </section>
+      </main>
+    <script src="{% static 'js/gs.js' %}"></script>
+    </body>
+  {%endif%}
+</html>

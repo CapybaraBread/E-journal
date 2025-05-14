@@ -1,0 +1,491 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap);
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+#class_grades {
+  color: #1E40AF;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f9ff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  cursor: pointer;
+  color: #1E40AF;
+}
+.menu-btn span {
+  font-size: 32px;
+}
+
+nav#sidebar,
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  background: #3B82F6;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+nav#sidebar.active,
+.sidebar.active {
+  left: 0;
+}
+nav#sidebar ul,
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav#sidebar ul li,
+.sidebar ul li {
+  margin: 10px 0;
+}
+nav#sidebar ul li a,
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+nav#sidebar ul li a:hover, nav#sidebar ul li a.active,
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background: #1E40AF;
+  border-radius: 8px;
+}
+
+main {
+  margin-left: 220px;
+  padding: 40px;
+}
+main section.grades .grades-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main section.grades .grades-header h1 {
+  margin: 0;
+}
+main section.grades .grades-header .btn {
+  background: #3B82F6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+main section.grades .grades-header .btn:hover {
+  background: rgb(11.1512195122, 99.1219512195, 242.8487804878);
+}
+main section.grades table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+main section.grades table thead {
+  background: #3B82F6;
+}
+main section.grades table thead th {
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+}
+main section.grades table tbody tr {
+  background: #fff;
+}
+main section.grades table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+main section.grades table tbody tr td {
+  padding: 12px;
+}
+main section.grades .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+main section.grades .modal.open {
+  display: flex;
+}
+main section.grades .modal .modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 320px;
+  position: relative;
+}
+main section.grades .modal .modal-content .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+main section.grades .modal .modal-content .form-group {
+  margin-bottom: 15px;
+}
+main section.grades .modal .modal-content .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+main section.grades .modal .modal-content .form-group input,
+main section.grades .modal .modal-content .form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+main section.news-section .news-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+main section.news-section .news-container .news-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 0 0 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+main section.news-section .news-container .news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+main section.news-section .news-container .news-item h3 {
+  margin-bottom: 10px;
+  color: #3B82F6;
+}
+main section.news-section .news-container .news-item p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#modal.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+#modal.modal.open {
+  display: flex;
+}
+#modal.modal .modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+#modal.modal .modal-content span.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+#modal.modal .modal-content span.close-modal:hover {
+  color: #333;
+}
+#modal.modal .modal-content h2 {
+  margin: 0 0 16px;
+  font-size: 1.4rem;
+  color: #1E40AF;
+  text-align: center;
+}
+#modal.modal .modal-content form#add-grade-form .form-group {
+  margin-bottom: 16px;
+}
+#modal.modal .modal-content form#add-grade-form .form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+#modal.modal .modal-content form#add-grade-form .form-group input,
+#modal.modal .modal-content form#add-grade-form .form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+#modal.modal .modal-content form#add-grade-form .form-group input:focus,
+#modal.modal .modal-content form#add-grade-form .form-group select:focus {
+  outline: none;
+  border-color: #3B82F6;
+}
+#modal.modal .modal-content form#add-grade-form button.btn {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#modal.modal .modal-content form#add-grade-form button.btn:hover {
+  background: rgb(19.9912195122, 105.1219512195, 244.2087804878);
+  transform: translateY(-1px);
+}
+#modal.modal .modal-content form#add-grade-form button.btn:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  /* фиксируем сайдбар и убираем бургер */
+  nav#sidebar,
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  button#menu-btn,
+  .menu-btn {
+    display: none;
+  }
+  /* теперь уже считаем ширину main с учётом sidebar */
+  main {
+    margin-left: 220px;
+    padding: 40px 20px;
+    /* <-- вот тут добавили: */
+    width: calc(100% - 220px);
+  }
+}
+@media (min-width: 1200px) {
+  main {
+    margin-left: 240px;
+    /* и для десктопа тоже: */
+    width: calc(100% - 240px);
+  }
+  #classes-container.classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+@media (min-width: 1600px) {
+  main {
+    /* оставляем отступ под сайдбар */
+    margin-left: 240px;
+    /* теперь контейнер реально занимает всё пространство без навбара */
+    width: calc(100% - 240px);
+    /* ограничиваем максимальную ширину, если нужно */
+    max-width: 1800px;
+    padding: 40px;
+  }
+}
+/* 1) Расставляем флекс и выравнивание */
+.header {
+  display: flex;
+  justify-content: space-between; /* распределяем logo ↔ профиль */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative; /* нужно, если у вас есть абсолютные дочерние элементы */
+}
+
+/* 2) Делаем .user-profile статичным флекс-элементом */
+.header .user-profile {
+  position: static; /* больше не абсолют */
+  margin-left: auto; /* отодвинет профиль вправо */
+  display: flex;
+  align-items: center;
+  background: #fff; /* белая «подушка» */
+  padding: 0.2rem 0.5rem; /* небольшой отступ вокруг */
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* z-index уже не нужен */
+}
+
+/* 3) Стили аватара и имени */
+.header .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header .username {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap; /* не даст имени разрываться */
+}
+
+/* 4) Подвиньте основной контент чуть ниже шапки, если нужно */
+.main {
+  margin-top: 1rem; /* или больше, под ваши паддинги шапки */
+}
+/*# sourceMappingURL=grades.css.map */
+/* Контейнер формы */
+.news-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Заголовок формы */
+.news-form__title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #1F2937;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Группа лейбл + поле */
+.news-form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.news-form__group label {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.news-form__group input,
+.news-form__group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.news-form__group input:focus,
+.news-form__group textarea:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* Кнопка отправки */
+.news-form__btn {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+
+.news-form__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+}
+
+.news-form__btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* 1) Кнопка справа */
+.news-action {
+  display: flex;             /* вместо text-align */
+  justify-content: flex-end; /* выравниваем по правому краю */
+  margin: 0 0 1rem 0;
+}
+
+.btn-add-news {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-add-news:hover {
+  background: #1E40AF;
+  transform: translateY(-2px);
+}
+
+/* 2) Затемнитель */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;                  /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* 3) Модальное окно формы */
+.news-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  z-index: 1001;
+  margin: 0; /* сбрасываем внешние отступы */
+  padding: 1.8rem; /* по вкусу */
+}
+
+.news-form.active {
+  display: block;
+}

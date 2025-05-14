@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Школьный журнал — Оценки</title>
+    <link rel="stylesheet" href="{% static 'css/mk.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gs.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <header class="header"><!-- …твой menu + logo-->
+    <div class="user-profile">
+      <button id="user-btn" class="user-btn" type="button">
+        <img class="avatar" src="https://www.otiss.co.uk/w/wp-content/uploads/2023/04/users-single.jpg" alt="Аватар пользователя">
+        <span class="username">{{user.username}}</span>
+      </button>
+      <div id="user-panel" class="user-panel hidden">
+        <p class="user-name">{{user.fio}}</p>
+        <p class="user-role">Роль: {{user.role}}</p>
+      </div>
+    </div>
+  </header>
+  <body><!-- Бургер-меню-->
+    <div class="menu-btn"><span class="material-icons">menu</span></div><!-- Сайдбар-->
+    <nav class="sidebar">
+      <ul>
+        <li><a href="{% url 'main_page'%}"><span class="material-icons">home</span> Главная</a></li>
+        <li><a href="{% url 'users' %}"><span class="material-icons">class</span>Пользователи</a></li>
+        <li><a href="{% url 'logout'%}"><span class="material-icons">login</span> Выход</a></li>
+      </ul>
+    </nav><!-- Контент-->
+    <main>
+      <section class="grades">
+        <div class="grades-header">
+          <h1 id="class_grades">7B класс</h1><button class="btn" id="add-grade-btn" type="button">Изменить роль</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Пользователь</th>
+              <th>Username</th>
+              <th>Роль</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for user in users%}
+              <tr>
+                <td>{{user.fio}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.role}}</td>
+              </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </section><!-- Модалка «Добавить оценки»-->
+      <div class="modal" id="modal">
+        <div class="modal-content"><span class="close-modal">&times;</span>
+          <h2>Изменить роль</h2>
+          <form id="add-grade-form" action="{% url 'users'%}" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+              <label for="grade-value">Роль</label>
+              {{form.role}}
+            </div>
+            <div class="form-group">
+              <label for="subject">Пользователь</label>
+              {{form.user}}
+            </div>
+            <button class="btn" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </div>
+      <section class="news-section">
+        <h2>Новости класса</h2>
+        <div class="news-container">
+          <div class="news-item">
+            <h3>Открытие новой лаборатории</h3>
+            <p>С сегодняшнего дня начинает работу новая химическая лаборатория.</p>
+          </div>
+          <div class="news-item">
+            <h3>Праздник осени</h3>
+            <p>Не пропустите ежегодный школьный фестиваль в пятницу!</p>
+          </div>
+          <div class="news-item">
+            <h3>Родительское собрание</h3>
+            <p>Напоминаем, что собрание состоится в среду в 18:00.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="{% static 'js/mk.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{%load static%}
+{% block title %} SkyDream - Profile {%endblock%}
+{%block content%}
+  <div class="profile_content">
+      <div class="profile_info">
+        <img src="{% static 'imgs/icons/profile.svg' %}">
+        <div class="profile_data">
+          <table>
+            <thead>
+                <tr>
+                  <th>Detail</th>
+                  <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Username</td>
+                <td>{{profile.username}}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{profile.email}}</td>
+              </tr>
+              <tr>
+                <td>Date created</td>
+                <td>{{profile.data_joined}}</td>
+              </tr>
+              <tr>
+                <td>First name</td>
+                <td>
+                  {%if profile.first_name%}
+                    {{profile.first_name}}
+                  {%else%}
+                    Не указано
+                  {%endif%}
+                </td>
+              </tr>
+              <tr>
+                <td>Last name</td>
+                <td>
+                  {%if profile.first_name%}
+                    {{profile.first_name}}
+                  {%else%}
+                    Не указано
+                  {%endif%}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="profile_change">
+        <h1>Profile</h1>
+        <form class="form_content" action="{% url 'profile' %}" method="post">
+          {% csrf_token %}
+          <div class = "info_change">
+            {{form.username}}
+            {{form.email}}
+            {{form.first_name}}
+            {{form.last_name}}
+            {% if form.errors %}
+                <label>{{form.errors}}</label>
+            {%endif%}
+          </div>
+          <button type="submit">Change</button>
+        </form>
+      </div>
+  </div>
+{%endblock%}
