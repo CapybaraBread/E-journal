@@ -18,7 +18,9 @@
         {{form.password}}
         <button type="submit">Войти</button>
         <a class = "url_avtor" href="{% url 'registration' %}">Зарегистрироваться</a>
-        {% include "includes/notifications.html" %}
+        {% if form.errors %}
+          <label>{{form.errors}}</label>
+        {%endif%}
       </form>
     </div>
   </main>

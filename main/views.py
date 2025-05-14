@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import CreateClassForm, AddStudentClassForm, CreateMarksForm, CreateNewsForm, UserRoleChangeForm
 from .models import Classes, News
