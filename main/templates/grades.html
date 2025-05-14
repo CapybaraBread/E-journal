@@ -18,7 +18,11 @@
       <div id="user-panel" class="user-panel hidden">
         <p class="user-name">{{user.fio}}</p>
         <p class="user-role">Роль: {{user.role}}</p>
-        <p class="user-class">Класс: {{user.stud_class.class_name}}</p>
+        {%if user.stud_class.class_name%}
+          <p class="user-class">Класс: {{user.stud_class.class_name}}</p>
+        {%else%}
+          <p class="user-class">Класс: {{user.stud_class.class_name}}</p>
+        {%endif%}
       </div>
     </div>
   </header>
@@ -71,18 +75,12 @@
         <section class="news-section">
           <h2>Новости класса</h2>
           <div class="news-container">
-            <div class="news-item">
-              <h3>Открытие новой лаборатории</h3>
-              <p>С сегодняшнего дня начинает работу новая химическая лаборатория.</p>
-            </div>
-            <div class="news-item">
-              <h3>Праздник осени</h3>
-              <p>Не пропустите ежегодный школьный фестиваль в пятницу!</p>
-            </div>
-            <div class="news-item">
-              <h3>Родительское собрание</h3>
-              <p>Напоминаем, что собрание состоится в среду в 18:00.</p>
-            </div>
+            {%for news_note in news%}
+              <div class="news-item">
+                <h3>{{news_note.title}}</h3>
+                <p>{{news_note.text}}</p>
+              </div>
+            {%endfor%}
           </div>
         </section>
       </main>

@@ -179,7 +179,11 @@
       <nav class="sidebar">
         <ul>
           <li><a href="{% url 'main_page'%}"><span class="material-icons">home</span> Главная</a></li>
-          <li><a href="{% url 'grades' class_name=user.stud_class.class_name%}"><span class="material-icons">class</span> Страница класса</a></li>
+          {%if user.stud_class.class_name%}
+            <li><a href="{% url 'grades' class_name=user.stud_class.class_name%}"><span class="material-icons">class</span> Страница класса</a></li>
+          {%else%}
+            <li><a href="#"><span class="material-icons">class</span> Страница класса</a></li>
+          {%endif%}
           <li><a href="{% url 'logout'%}"><span class="material-icons">login</span> Выход</a></li>
         </ul>
       </nav>

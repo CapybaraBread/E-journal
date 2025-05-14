@@ -13,7 +13,7 @@ class User(AbstractUser):
         verbose_name='Класс',
         related_name='students',
         null=True,
-        blank=True
+        blank=True,
     )
 
     def __str__(self):

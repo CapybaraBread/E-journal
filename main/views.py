@@ -53,6 +53,12 @@ def main_page(request):
 
 
 def grades(request, class_name):
+    try:
+        Classes.objects.get(class_name=class_name)
+    except:
+        return HttpResponseRedirect(reverse('main_page'))
+    if len(Classes.objects.all()) == 0:
+        return HttpResponseRedirect(reverse('main_page'))
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('registration'))
     news = News.objects.filter(role=class_name)
