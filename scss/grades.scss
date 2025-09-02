@@ -1,0 +1,406 @@
+// grades.scss
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+$blue: #3B82F6;
+$dark-blue: #1E40AF;
+$gray: #f5f9ff;
+$font-family: 'Roboto', sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+#class_grades{
+  color: $dark-blue;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  background-color: $gray;
+  color: #333;
+  overflow-x: hidden;
+}
+
+// Бургер-меню
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  cursor: pointer;
+  color: $dark-blue;
+  span {
+    font-size: 32px;
+  }
+}
+
+// Сайдбар
+nav#sidebar,
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  background: $blue;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+
+  &.active {
+    left: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        transition: background 0.3s;
+
+        &:hover,
+        &.active {
+          background: $dark-blue;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+
+// Контент
+main {
+  margin-left: 220px;
+  padding: 40px;
+
+  section.grades {
+    .grades-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        margin: 0;
+      }
+
+      .btn {
+        background: $blue;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover {
+          background: darken($blue, 10%);
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+
+      thead {
+        background: $blue;
+        th {
+          color: #fff;
+          padding: 12px;
+          text-align: left;
+        }
+      }
+
+      tbody {
+        tr {
+          background: #fff;
+          &:nth-child(even) {
+            background: #f9f9f9;
+          }
+
+          td {
+            padding: 12px;
+          }
+        }
+      }
+    }
+
+    // Стили модалки
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+
+      &.open {
+        display: flex;
+      }
+
+      .modal-content {
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        width: 320px;
+        position: relative;
+
+        .close-modal {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          font-size: 24px;
+        }
+
+        .form-group {
+          margin-bottom: 15px;
+
+          label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+          }
+
+          input,
+          select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  section.news-section {
+    .news-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+
+      .news-item {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        flex: 0 0 280px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+          margin-bottom: 10px;
+          color: $blue;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: #555;
+        }
+      }
+    }
+  }
+}
+// Стили для модального окна «Добавить оценку»
+#modal.modal {
+  display: none;              // по умолчанию скрыта
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+
+  &.open {
+    display: flex;            // показываем, когда добавляем класс .open
+  }
+
+  .modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    span.close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #333;
+      }
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.4rem;
+      color: $dark-blue;
+      text-align: center;
+    }
+
+    form#add-grade-form {
+      .form-group {
+        margin-bottom: 16px;
+
+        label {
+          display: block;
+          margin-bottom: 6px;
+          font-weight: 500;
+          font-size: 0.95rem;
+        }
+
+        input,
+        select {
+          width: 100%;
+          padding: 8px 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 0.95rem;
+          transition: border-color 0.2s;
+
+          &:focus {
+            outline: none;
+            border-color: $blue;
+          }
+        }
+      }
+
+      button.btn {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        background: $blue;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.1s;
+
+        &:hover {
+          background: darken($blue, 8%);
+          transform: translateY(-1px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  /* фиксируем сайдбар и убираем бургер */
+  nav#sidebar,
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  button#menu-btn,
+  .menu-btn {
+    display: none;
+  }
+
+  /* теперь уже считаем ширину main с учётом sidebar */
+  main {
+    margin-left: 220px;
+    padding: 40px 20px;
+    /* <-- вот тут добавили: */
+    width: calc(100% - 220px);
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    margin-left: 240px;
+    /* и для десктопа тоже: */
+    width: calc(100% - 240px);
+  }
+  #classes-container.classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (min-width: 1600px) {
+  main {
+    /* оставляем отступ под сайдбар */
+    margin-left: 240px;
+    /* теперь контейнер реально занимает всё пространство без навбара */
+    width: calc(100% - 240px);
+    /* ограничиваем максимальную ширину, если нужно */
+    max-width: 1800px;
+    padding: 40px;
+  }
+}
+/* 1) Расставляем флекс и выравнивание */
+.header {
+  display: flex;
+  justify-content: space-between; /* распределяем logo ↔ профиль */
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: relative; /* нужно, если у вас есть абсолютные дочерние элементы */
+}
+
+/* 2) Делаем .user-profile статичным флекс-элементом */
+.header .user-profile {
+  position: static;      /* больше не абсолют */
+  margin-left: auto;     /* отодвинет профиль вправо */
+  display: flex;
+  align-items: center;
+  background: #fff;      /* белая «подушка» */
+  padding: 0.2rem 0.5rem;/* небольшой отступ вокруг */
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  /* z-index уже не нужен */
+}
+
+/* 3) Стили аватара и имени */
+.header .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header .username {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  white-space: nowrap;  /* не даст имени разрываться */
+}
+
+/* 4) Подвиньте основной контент чуть ниже шапки, если нужно */
+.main {
+  margin-top: 1rem; /* или больше, под ваши паддинги шапки */
+}

@@ -1,0 +1,473 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap);
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background: #f5f9ff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* -----------------------------------
+   Бургер-меню
+----------------------------------- */
+button#menu-btn,
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #1E40AF;
+}
+
+/* -----------------------------------
+   Сайдбар
+----------------------------------- */
+nav#sidebar,
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 250px;
+  height: 100vh;
+  background: #3B82F6;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+nav#sidebar.active,
+.sidebar.active {
+  left: 0;
+}
+nav#sidebar ul,
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav#sidebar ul li,
+.sidebar ul li {
+  margin: 10px 0;
+}
+nav#sidebar ul li a,
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+nav#sidebar ul li a:hover, nav#sidebar ul li a.active,
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background: #1E40AF;
+  border-radius: 8px;
+}
+
+/* -----------------------------------
+   Основной контейнер (mobile-first)
+----------------------------------- */
+main {
+  padding: 4vh 2vh;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.indefined {
+  background-color: #fff;
+  flex-grow: 3;
+}
+
+/* -----------------------------------
+   Intro
+----------------------------------- */
+section.intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+section.intro h1 {
+  font-size: 2.5rem;
+  color: #1E40AF;
+  margin: 0 0 10px;
+}
+section.intro p {
+  font-size: 1.1rem;
+  color: black;
+  margin: 0;
+}
+
+/* -----------------------------------
+   Секция «Наши классы»
+----------------------------------- */
+section.classes-section {
+  margin-bottom: 60px;
+}
+section.classes-section .classes-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+section.classes-section .classes-header h2 {
+  font-size: 2rem;
+  color: #1E40AF;
+  margin: 0;
+}
+section.classes-section .classes-header #add-stydent-btn {
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+section.classes-section .classes-header #add-stydent-btn:hover {
+  background: #1E40AF;
+  transform: translateY(-2px);
+}
+section.classes-section .classes-header #add-class-btn {
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+section.classes-section .classes-header #add-class-btn:hover {
+  background: #1E40AF;
+  transform: translateY(-2px);
+}
+section.classes-section #classes-container.classes-grid {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+section.classes-section .class-card {
+  width: 17vw;
+  margin-right: 4vw;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+section.classes-section .class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+section.classes-section .class-card h3 {
+  margin: 0 0 10px;
+  color: #3B82F6;
+  font-size: 1.5rem;
+}
+section.classes-section .class-card .teacher-name {
+  font-size: 0.95rem;
+  color: black;
+  margin-bottom: 10px;
+}
+section.classes-section .class-card .count-badge {
+  display: inline-block;
+  background: #1E40AF;
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+/* -----------------------------------
+   Секция «Новости»
+----------------------------------- */
+section.news-section {
+  margin-bottom: 60px;
+}
+section.news-section h2 {
+  font-size: 2rem;
+  color: #1E40AF;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-bottom: 10px;
+  overflow: visible;
+}
+.news-container::-webkit-scrollbar {
+  height: 8px;
+}
+.news-container::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 10px;
+}
+.news-container::-webkit-scrollbar-track {
+  background: #f5f9ff;
+}
+
+.news-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  flex: 0 0 300px;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.news-item h3 {
+  margin: 0 0 10px;
+  color: #3B82F6;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.news-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: black;
+}
+
+/* -----------------------------------
+   Модальное окно «Добавить класс»
+----------------------------------- */
+#modal.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#modal.modal.active {
+  display: flex;
+}
+#modal.modal .modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#modal.modal .modal-content span.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1E40AF;
+  transition: color 0.2s;
+}
+#modal.modal .modal-content span.close-modal:hover {
+  color: #3B82F6;
+}
+#modal.modal .modal-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1E40AF;
+  text-align: center;
+}
+#modal.modal .modal-content form#add-class-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#modal.modal .modal-content form#add-class-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#modal.modal .modal-content form#add-class-form .form-group label {
+  font-size: 0.95rem;
+  color: #1E40AF;
+}
+#modal.modal .modal-content form#add-class-form .form-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#modal.modal .modal-content form#add-class-form .form-group input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#save-class-btn {
+  align-self: center;
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#save-class-btn:hover {
+  background: #1E40AF;
+  transform: translateY(-1px);
+}
+
+#modal-stydent.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#modal-stydent.modal.active {
+  display: flex;
+}
+#modal-stydent.modal .modal-stydent-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#modal-stydent.modal .modal-stydent-content span.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1E40AF;
+  transition: color 0.2s;
+}
+#modal-stydent.modal .modal-stydent-content span.close-modal:hover {
+  color: #3B82F6;
+}
+#modal-stydent.modal .modal-stydent-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1E40AF;
+  text-align: center;
+}
+#modal-stydent.modal .modal-stydent-content form#add-stydent-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#modal-stydent.modal .modal-stydent-content form#add-stydent-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+#modal-stydent.modal .modal-stydent-content form#add-stydent-form .form-group label {
+  font-size: 0.95rem;
+  color: #1E40AF;
+}
+#modal-stydent.modal .modal-stydent-content form#add-stydent-form .form-group input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#modal-stydent.modal .modal-stydent-content form#add-stydent-form .form-group input:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+#save-stydent-btn {
+  align-self: center;
+  background: #3B82F6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#save-stydent-btn:hover {
+  background: #1E40AF;
+  transform: translateY(-1px);
+}
+
+/* -----------------------------------
+   Responsive Breakpoints
+----------------------------------- */
+@media (min-width: 768px) {
+  /* фиксируем сайдбар и убираем бургер */
+  nav#sidebar,
+  .sidebar {
+    left: 0;
+    width: 200px;
+  }
+  button#menu-btn,
+  .menu-btn {
+    display: none;
+  }
+  /* теперь уже считаем ширину main с учётом sidebar */
+  main {
+    margin-left: 220px;
+    padding: 40px 20px;
+    /* <-- вот тут добавили: */
+    width: calc(100% - 220px);
+  }
+}
+@media (min-width: 1200px) {
+  main {
+    margin-left: 240px;
+    /* и для десктопа тоже: */
+    width: calc(100% - 240px);
+  }
+  #classes-container.classes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+@media (min-width: 1600px) {
+  main {
+    /* оставляем отступ под сайдбар */
+    margin-left: 240px;
+    /* теперь контейнер реально занимает всё пространство без навбара */
+    width: calc(100% - 240px);
+    /* ограничиваем максимальную ширину, если нужно */
+    max-width: 1800px;
+    padding: 40px;
+  }
+}
+/*# sourceMappingURL=gs.css.map */

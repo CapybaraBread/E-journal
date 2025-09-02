@@ -1,0 +1,98 @@
+// gs.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Школьный журнал — Главная
+    link(rel="stylesheet", href=require("/scss/gs.scss"))
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  
+  header.header
+      // …твой menu + logo
+      .user-profile
+        img.avatar(src="https://www.otiss.co.uk/w/wp-content/uploads/2023/04/users-single.jpg" alt="Аватар пользователя")
+        span.username Иван И.
+  body
+    // Бургер-меню
+    .menu-btn
+      span.material-icons menu
+
+    // Сайдбар
+    nav.sidebar
+      ul
+        li
+          a(href="#")
+            span.material-icons home
+            |  Главная
+        li
+          a(href="#")
+            span.material-icons class
+            |  Страница класса
+        li
+          a(href="#")
+            span.material-icons login
+            |  Выход
+
+    // Модалка «Добавить класс»
+    #modal.modal
+      .modal-content
+        span.close-modal &times;
+        h2 Добавить класс
+        form#add-class-form
+          .form-group
+            label(for="class-name") Название класса
+            input#class-name(type="text" name="class-name")
+          .form-group
+            label(for="teacher-name") ФИО кл. руководителя
+            input#teacher-name(type="text" name="teacher-name")
+        button#save-class-btn.btn(type="button") Сохранить
+    
+    #modal-stydent.modal
+      .modal-stydent-content
+        span.close-modal &times;
+        h2 Добавить ученика к классу
+        form#add-stydent-form
+          .form-group
+            label(for="class-name") Название класса
+            input#class-name-stydent(type="text" name="class-name")
+          .form-group
+            label(for="stydent-name") ФИО ученика
+            input#stydent-name(type="text" name="stydent-name")
+        button#save-stydent-btn.btn(type="button") Сохранить
+
+    // Контент
+    main
+      section.intro
+        h1 Школьный электронный журнал
+        p Легко и удобно следить за успеваемостью и домашними заданиями онлайн.
+
+      section.classes-section
+        .classes-header
+          h2 Наши классы
+          .indefined
+          button#add-stydent-btn.btn(type="button", style='margin-right: 1vw') Добавить ученика к классу
+          button#add-class-btn.btn(type="button") Добавить класс
+        #classes-container.classes-grid
+          a.class-card
+            h3 7А класс
+            .teacher-name Кл. рук.: Иванова Е.В.
+            span.count-badge 25 учеников
+          a.class-card
+            h3 7А класс
+            .teacher-name Кл. рук.: Иванова Е.В.
+            span.count-badge 25 учеников
+          a.class-card
+            h3 7А класс
+            .teacher-name Кл. рук.: Иванова Е.В.
+            span.count-badge 25 учеников
+
+      section.news-section
+        h2 Новости школы
+        .news-container
+          .news-item
+            h3 Открытие новой лаборатории
+            p С сегодняшнего дня начинает работу новая химическая лаборатория.
+
+    script(src="/Js/gs.js")
+    script(src="/Js/gs-stydent.js")
